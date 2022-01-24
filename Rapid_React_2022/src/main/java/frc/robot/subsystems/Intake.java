@@ -19,13 +19,7 @@ public class Intake extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-  public void motorOn(){
-    intake.set(ControlMode.PercentOutput, Constants.intakeSpeed);
-  }
-  public void motorOff(){
-    intake.set(ControlMode.PercentOutput, 0.0);
-  }
-  public void motorReverse(){
-    intake.set(ControlMode.PercentOutput, -Constants.intakeSpeed);
-  }
+  public void motorOn(){intake.set(ControlMode.PercentOutput, Constants.intakeSpeed);}
+  public void motorOff(){intake.set(ControlMode.PercentOutput, 0.0);}
+  public void motorReverse(){intake.set(ControlMode.PercentOutput, -Constants.intakeSpeed);}
 }
