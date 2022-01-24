@@ -14,4 +14,7 @@ package frc.robot;
  */
 public final class Constants {
     public static final int intakeId = 20;
+    public static final int stage1Id = 21;
+    public static final double intakeSpeed = 1.0;
+    public static final double stage1Speed = 1.0;
 }
