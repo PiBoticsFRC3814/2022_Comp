@@ -5,13 +5,30 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class Stage2 extends SubsystemBase {
+
+  TalonSRX Stage2 = new TalonSRX(Constants.stage2Id);
   /** Creates a new Stage2. */
-  public Stage2() {}
+  public Stage2() {
+
+  }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+  }
+  public void Stage2On(){
+    Stage2.set(ControlMode.PercentOutput, Constants.stage2Speed);
+  }
+  public void Stage2Off(){
+    Stage2.set(ControlMode.PercentOutput, 0.0);
+  }
+  public void Stage2Reverse(){
+    Stage2.set(ControlMode.PercentOutput, -Constants.stage2Speed);
   }
 }
