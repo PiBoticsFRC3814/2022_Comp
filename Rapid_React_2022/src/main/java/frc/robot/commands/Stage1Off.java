@@ -5,11 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Stage1;
 
 public class Stage1Off extends CommandBase {
+  Stage1 m_stage1;
   /** Creates a new Stage1Off. */
-  public Stage1Off() {
+  public Stage1Off(Stage1 s1) {
     // Use addRequirements() here to declare subsystem dependencies.
+    m_stage1 = s1;
+    addRequirements(m_stage1);
   }
 
   // Called when the command is initially scheduled.
@@ -18,7 +22,9 @@ public class Stage1Off extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    m_stage1.motorOff();
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -27,6 +33,6 @@ public class Stage1Off extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }
