@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.*;
-import frc.robot.commands.*;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -25,6 +24,16 @@ public class RobotContainer {
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   public final DriveTrain m_piboticsdrive = new DriveTrain();
+
+  public final Intake m_intake = new Intake();
+
+  public final Shooter m_shooter = new Shooter();
+
+  public final Stage1 m_stage1 = new Stage1();
+
+  public final Stage2 m_stage2 = new Stage2();
+
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
