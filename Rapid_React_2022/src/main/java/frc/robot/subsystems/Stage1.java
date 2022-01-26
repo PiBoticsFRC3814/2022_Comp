@@ -19,7 +19,13 @@ public class Stage1 extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-  public void motorOn(){stage1.set(ControlMode.PercentOutput, Constants.stage1Speed);}
-  public void motorOff(){stage1.set(ControlMode.PercentOutput, 0.0);}
-  public void motorReverse(){stage1.set(ControlMode.PercentOutput, -Constants.stage1Speed);}
+  public void Stage1On(){
+    stage1.set(ControlMode.PercentOutput, Constants.stage1Speed);
+  }
+  public void Stage1Off(){
+    stage1.set(ControlMode.PercentOutput, 0.0);
+  }
+  public void Stage1Reverse(){
+    stage1.set(ControlMode.PercentOutput, -Constants.stage1Speed);
+  }
 }

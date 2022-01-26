@@ -31,7 +31,10 @@ public class Shooter extends SubsystemBase {
 
   public void setSpeed(double speed){
     velocityPID.setReference(speed, ControlType.kVelocity);
-  } 
+  }
+  public void stop(){
+    shooter.set(0.0);
+  }
   
 
   @Override

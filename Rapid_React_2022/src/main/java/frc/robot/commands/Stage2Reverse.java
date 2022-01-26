@@ -5,11 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Stage2;
 
 public class Stage2Reverse extends CommandBase {
   /** Creates a new Stage2Reverse. */
-  public Stage2Reverse() {
+  Stage2 m_stage2;
+  public Stage2Reverse(Stage2 s2) {
     // Use addRequirements() here to declare subsystem dependencies.
+    m_stage2 = s2;
+    addRequirements(m_stage2);
   }
 
   // Called when the command is initially scheduled.
@@ -18,7 +22,9 @@ public class Stage2Reverse extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    m_stage2.Stage2Reverse();
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -27,6 +33,6 @@ public class Stage2Reverse extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

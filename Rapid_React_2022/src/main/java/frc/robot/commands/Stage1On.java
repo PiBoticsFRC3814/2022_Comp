@@ -23,7 +23,7 @@ public class Stage1On extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_stage1.motorOn();
+    m_stage1.Stage1On();
   }
 
   // Called once the command ends or is interrupted.

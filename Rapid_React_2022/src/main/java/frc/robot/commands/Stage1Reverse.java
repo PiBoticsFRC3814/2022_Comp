@@ -23,7 +23,7 @@ public class Stage1Reverse extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_stage1.motorReverse();
+    m_stage1.Stage1Reverse();
   }
 
   // Called once the command ends or is interrupted.
