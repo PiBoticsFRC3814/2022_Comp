@@ -29,13 +29,16 @@ public class Shooter extends SubsystemBase {
     velocityPID.setOutputRange(Constants.kMinOutput, Constants.kMaxOutput);
   }
 
+  public double getSpeed(){
+    return encoder.getVelocity();
+  }
+
   public void setSpeed(double speed){
     velocityPID.setReference(speed, ControlType.kVelocity);
   }
   public void stop(){
     shooter.set(0.0);
   }
-  
 
   @Override
   public void periodic() {
