@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -14,10 +16,10 @@ package frc.robot;
  */
 public final class Constants {
     //motor ids
-    public static final int intakeId = 20;
+    public static final int intakeId = 23;
     public static final int stage1Id = 21;
     public static final int stage2Id = 22;
-    public static final int shooterId = 30;
+    public static final int shooterId = 20;
 
     //motor speeds
     public static final double intakeSpeed = 1.0;
@@ -32,6 +34,17 @@ public final class Constants {
     public static final double kFF = 0.000015; 
     public static final double kMaxOutput = 1; 
     public static final double kMinOutput = -1;
-    public static final double targetRPM = 5700;
+    public static final double targetRPM = 60;
     public static final double RPMtolerance = 50;
+
+    //drive train ids
+    public static final int lf = 2;
+    public static final int rf = 1;
+    public static final int lr = 12;
+    public static final int rr = 13;
+
+    //joysticks
+    public static final int ds = 0;
+
+
 }

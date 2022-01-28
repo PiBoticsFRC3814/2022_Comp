@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class Stage2 extends SubsystemBase {
 
-  TalonSRX Stage2 = new TalonSRX(Constants.stage2Id);
+  WPI_TalonSRX Stage2 = new WPI_TalonSRX(Constants.stage2Id);
   /** Creates a new Stage2. */
   public Stage2() {
 

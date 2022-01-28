@@ -5,11 +5,15 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -33,11 +37,14 @@ public class RobotContainer {
 
   public final Stage2 m_stage2 = new Stage2();
 
+  public final Joystick driveStick = new Joystick(Constants.ds);
+
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
+    m_piboticsdrive.setDefaultCommand(new PiboticsDrive(m_piboticsdrive, driveStick));
     configureButtonBindings();
   }
 
@@ -47,7 +54,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    JoystickButton neo = new JoystickButton(driveStick, 1);
+
+    neo.whenPressed(new ShooterOn(m_shooter));
+    neo.whenReleased(new ShooterOff(m_shooter));
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
