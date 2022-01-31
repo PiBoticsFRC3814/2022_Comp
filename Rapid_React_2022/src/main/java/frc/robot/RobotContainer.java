@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
@@ -31,7 +32,7 @@ public class RobotContainer {
 
   public final Intake m_intake = new Intake();
 
-  public final Shooter m_shooter = new Shooter();
+  public static final Shooter m_shooter = new Shooter();
 
   public final Stage1 m_stage1 = new Stage1();
 
@@ -57,7 +58,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     JoystickButton neo = new JoystickButton(driveStick, 1);
 
-    neo.whenPressed(new ShooterOn(m_shooter));
+    neo.whileHeld(new ShooterOn(m_shooter));
     neo.whenReleased(new ShooterOff(m_shooter));
   }
 

@@ -27,14 +27,14 @@ public final class Constants {
     public static final double stage2Speed = 1.0;
 
     //shooter PID
-    public static final double kP = 6e-5; 
-    public static final double kI = 0;
-    public static final double kD = 0; 
+    public static final double kP = 2e-4; 
+    public static final double kI = 1e-7;
+    public static final double kD = 1e-8; 
     public static final double kIz = 0; 
-    public static final double kFF = 0.000015; 
-    public static final double kMaxOutput = 1; 
-    public static final double kMinOutput = -1;
-    public static final double targetRPM = 60;
+    public static final double kFF = 0.00015; 
+    public static final double kMaxOutput = 1.0; 
+    public static final double kMinOutput = 0.1;
+    public static final double targetRPM = 2000;
     public static final double RPMtolerance = 50;
 
     //drive train ids
