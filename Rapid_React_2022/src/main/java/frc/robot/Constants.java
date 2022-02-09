@@ -29,9 +29,9 @@ public final class Constants {
     //shooter PID
     public static final double kP = 2e-4; 
     public static final double kI = 1e-7;
-    public static final double kD = 1e-8; 
+    public static final double kD = 0; 
     public static final double kIz = 0; 
-    public static final double kFF = 0.00015; 
+    public static final double kFF = 0.00014; 
     public static final double kMaxOutput = 1.0; 
     public static final double kMinOutput = 0.1;
     public static final double targetRPM = 2000;
