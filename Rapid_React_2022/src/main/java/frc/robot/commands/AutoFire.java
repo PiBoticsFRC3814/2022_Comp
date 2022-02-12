@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Shooter;
@@ -16,6 +17,10 @@ public class AutoFire extends CommandBase {
   Stage1 m_stage1;
   Stage2 m_stage2;
   double velocity = 0.0;
+  int counter = 0;
+  boolean se1, se2, finish;
+
+  Timer timer = new Timer();
   
   public AutoFire(Stage1 s1, Stage2 s2, Shooter sh) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -29,13 +34,27 @@ public class AutoFire extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    counter = 0;
+    se1 = false;
+    se2 = false;
+    finish = false;
+    timer.reset();
+    m_shooter.setSpeed(Constants.targetRPM);
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    se1 = !m_stage1.getSensorState();
+    se2 = !m_stage2.getSensorState();
     velocity = m_shooter.getSpeed();
+
     if((velocity > Constants.targetRPM - Constants.RPMtolerance) && (velocity < Constants.targetRPM + Constants.RPMtolerance))
+    {
+      counter++;
+    }
+    if(counter > 10)
     {
       m_stage2.Stage2On();
       m_stage1.Stage1On();
@@ -45,6 +64,18 @@ public class AutoFire extends CommandBase {
       m_stage1.Stage1Off();    //Check if intake doesn't work
       m_stage2.Stage2Off();
     }
+
+    if(!se2)
+    {
+      timer.start();
+    }
+    if(se2 && (timer.get()>0.05))
+    {
+      m_stage1.Stage1Off();
+      m_stage2.Stage2Off();
+      finish = true;
+    }
+  
   }
 
   // Called once the command ends or is interrupted.
@@ -54,6 +85,6 @@ public class AutoFire extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return finish;
   }
 }

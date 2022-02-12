@@ -7,12 +7,15 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Stage1 extends SubsystemBase {
   /** Creates a new Stage1. */
   TalonSRX stage1 = new TalonSRX(Constants.stage1Id);
+  DigitalInput limit = new DigitalInput(Constants.stage1Channel);
   public Stage1() {}
 
   @Override
@@ -27,5 +30,8 @@ public class Stage1 extends SubsystemBase {
   }
   public void Stage1Reverse(){
     stage1.set(ControlMode.PercentOutput, -Constants.stage1Speed);
+  }
+  public boolean getSensorState(){
+    return limit.get();
   }
 }

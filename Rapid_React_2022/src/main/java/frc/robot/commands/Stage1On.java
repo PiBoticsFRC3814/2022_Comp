@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Stage1;
 
@@ -24,6 +25,7 @@ public class Stage1On extends CommandBase {
   @Override
   public void execute() {
     m_stage1.Stage1On();
+    SmartDashboard.putBoolean("State: ", m_stage1.getSensorState());
   }
 
   // Called once the command ends or is interrupted.
@@ -33,6 +35,6 @@ public class Stage1On extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }

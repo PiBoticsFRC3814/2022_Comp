@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -57,9 +56,13 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     JoystickButton neo = new JoystickButton(driveStick, 1);
+    JoystickButton stage1 = new JoystickButton(driveStick, 2);
 
     neo.whileHeld(new ShooterOn(m_shooter));
     neo.whenReleased(new ShooterOff(m_shooter));
+
+    stage1.whenPressed(new Stage1On(m_stage1));
+    stage1.whenReleased(new Stage1Off(m_stage1));
   }
 
   /**

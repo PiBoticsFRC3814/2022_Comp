@@ -22,26 +22,22 @@ public class ShooterOn extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    DriverStation.reportError("INIT SHOOTER", false);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     m_shooter.setSpeed(Constants.targetRPM);
-    DriverStation.reportError("EXECUTE SHOOTER", false);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    DriverStation.reportError("END SHOOTER", false);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    DriverStation.reportError("FALSE SHOOTER", false);
     return false;
   }
 }
