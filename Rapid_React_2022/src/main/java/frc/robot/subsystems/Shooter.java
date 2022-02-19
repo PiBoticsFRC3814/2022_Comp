@@ -21,6 +21,8 @@ public class Shooter extends SubsystemBase {
     velocityPID = shooter.getPIDController();
     encoder = shooter.getEncoder();
 
+    shooter.setIdleMode(CANSparkMax.IdleMode.kCoast);
+
     velocityPID.setP(Constants.kP);
     velocityPID.setI(Constants.kI);
     velocityPID.setD(Constants.kD);

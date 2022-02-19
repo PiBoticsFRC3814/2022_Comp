@@ -5,10 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Intake;
 
 public class IntakeOff extends CommandBase {
   /** Creates a new IntakeOff. */
-  public IntakeOff() {
+  Intake m_intake;
+
+  public IntakeOff(Intake intake) {
+    m_intake = intake;
+    addRequirements(m_intake);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -18,7 +23,9 @@ public class IntakeOff extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    m_intake.IntakeOff();
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -27,6 +34,6 @@ public class IntakeOff extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

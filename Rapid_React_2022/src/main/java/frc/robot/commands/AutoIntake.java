@@ -4,46 +4,33 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Stage1;
 import frc.robot.subsystems.Stage2;
 
-public class AutoFire extends CommandBase {
-  /** Creates a new AutoFire. */
-  Shooter m_shooter;
+public class AutoIntake extends CommandBase {
+  /** Creates a new AutoIntake. */
+  Intake m_intake;
   Stage1 m_stage1;
   Stage2 m_stage2;
-  double velocity = 0.0;
-  int counter = 0;
   boolean se1, se2, finish;
-
-  Timer timer = new Timer();
-  
-  public AutoFire(Stage1 s1, Stage2 s2, Shooter sh) {
+  public AutoIntake(Intake intake, Stage1 s1, Stage2 s2) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_shooter = sh;
+    m_intake = intake;
     m_stage1 = s1;
     m_stage2 = s2;
+    addRequirements(m_intake);
     addRequirements(m_stage1);
     addRequirements(m_stage2);
-    addRequirements(m_shooter);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    counter = 0;
     se1 = false;
     se2 = false;
     finish = false;
-    timer.stop();
-    timer.reset();
-    //m_shooter.setSpeed(Constants.targetRPM);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -51,34 +38,23 @@ public class AutoFire extends CommandBase {
   public void execute() {
     se1 = !m_stage1.getSensorState();
     se2 = !m_stage2.getSensorState();
- //   velocity = m_shooter.getSpeed();
-    velocity = Constants.targetRPM;
-    if((velocity > Constants.targetRPM - Constants.RPMtolerance) && (velocity < Constants.targetRPM + Constants.RPMtolerance))
-    {
-      counter++;
+
+    if((!se1)||(!se2)){
+      m_stage1.Stage1On();
+      m_intake.IntakeOn();
     }
-    if(counter > 10)
-    {
+    else{
+      m_stage2.Stage2Off();
+      m_stage1.Stage1Off();
+      m_intake.IntakeOff();
+      finish = true;
+    }
+    if(!se2){
       m_stage2.Stage2On();
-      timer.start();
     }
-    else
-    {
+    else{
       m_stage2.Stage2Off();
     }
-    if((timer.get() > Constants.shootDelay)){
-      if((!se2)){
-        m_stage1.Stage1On();
-        m_stage2.Stage2On();
-      }
-      else{
-        m_stage1.Stage1Off();
-        m_stage2.Stage2Off();
-        m_shooter.stop();
-        finish = true;
-      }
-    }
-  
   }
 
   // Called once the command ends or is interrupted.

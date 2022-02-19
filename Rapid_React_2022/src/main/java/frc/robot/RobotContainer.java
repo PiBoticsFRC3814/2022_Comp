@@ -55,14 +55,22 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton neo = new JoystickButton(driveStick, 1);
-    JoystickButton stage1 = new JoystickButton(driveStick, 2);
+    JoystickButton autoFire = new JoystickButton(driveStick, 1);
+    JoystickButton autoIntake = new JoystickButton(driveStick, 8);
+    JoystickButton outTake = new JoystickButton(driveStick, 12);
 
-    neo.whileHeld(new ShooterOn(m_shooter));
-    neo.whenReleased(new ShooterOff(m_shooter));
+    autoFire.whenPressed(new AutoFire(m_stage1, m_stage2, m_shooter));
+    autoFire.whenReleased(new ShooterOff(m_shooter));
+    autoFire.whenReleased(new Stage1Off(m_stage1));
+    autoFire.whenReleased(new Stage2Off(m_stage2));
 
-    stage1.whenPressed(new Stage1On(m_stage1));
-    stage1.whenReleased(new Stage1Off(m_stage1));
+    autoIntake.whenPressed(new AutoIntake(m_intake, m_stage1, m_stage2));
+    autoIntake.whenReleased(new IntakeOff(m_intake));
+    autoIntake.whenReleased(new Stage1Off(m_stage1));
+    autoIntake.whenReleased(new Stage2Off(m_stage2));
+
+    outTake.whenPressed(new IntakeReverse(m_intake));
+    outTake.whenReleased(new IntakeOff(m_intake));
   }
 
   /**

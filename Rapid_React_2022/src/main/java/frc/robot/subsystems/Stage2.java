@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -13,6 +14,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class Stage2 extends SubsystemBase {
 
   WPI_TalonSRX Stage2 = new WPI_TalonSRX(Constants.stage2Id);
+  DigitalInput limit = new DigitalInput(Constants.stage2Channel);
   /** Creates a new Stage2. */
   public Stage2() {
 
@@ -30,5 +32,8 @@ public class Stage2 extends SubsystemBase {
   }
   public void Stage2Reverse(){
     Stage2.set(ControlMode.PercentOutput, -Constants.stage2Speed);
+  }
+  public boolean getSensorState(){
+    return limit.get();
   }
 }

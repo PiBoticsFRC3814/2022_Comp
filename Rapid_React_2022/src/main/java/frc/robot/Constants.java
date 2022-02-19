@@ -23,6 +23,7 @@ public final class Constants {
 
     //sensor channel
     public static final int stage1Channel = 0;
+    public static final int stage2Channel = 1;
 
     //motor speeds
     public static final double intakeSpeed = 1.0;
@@ -40,9 +41,13 @@ public final class Constants {
     public static final double targetRPM = 2000;
     public static final double RPMtolerance = 50;
 
+    //shooter delay
+    public static final double shootDelay = 0.2;
+      
+
     //drive train ids
-    public static final int lf = 2;
-    public static final int rf = 1;
+    public static final int lf = 10;
+    public static final int rf = 11;
     public static final int lr = 12;
     public static final int rr = 13;
 
