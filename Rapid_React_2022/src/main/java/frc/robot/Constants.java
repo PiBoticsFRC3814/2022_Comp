@@ -54,5 +54,10 @@ public final class Constants {
     //joysticks
     public static final int ds = 0;
 
-
+    //LimeLight variables
+    public static final double limeAngle = 0.0;
+    public static final double targetHeight = 0.0;
+    public static final double limeHeight = 0.0;
+    public static final double distanceLowest = 0.0;
+    public static final double distanceFarthest = 0.0;
 }
