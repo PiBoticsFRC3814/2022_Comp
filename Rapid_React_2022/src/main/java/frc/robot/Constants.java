@@ -53,6 +53,7 @@ public final class Constants {
 
     //joysticks
     public static final int ds = 0;
+    public static final int os = 2;
 
     //LimeLight variables
     public static final double limeAngle = 0.0;
@@ -60,4 +61,19 @@ public final class Constants {
     public static final double limeHeight = 0.0;
     public static final double distanceLowest = 0.0;
     public static final double distanceFarthest = 0.0;
+
+    //pnuematics 
+    public static final int lfExtend = 0;
+    public static final int lrExtend = 2;
+    public static final int rfExtend = 4;
+    public static final int rrExtend = 6;
+    public static final int lpExtend = 8;
+    public static final int rpExtend = 10;
+
+    public static final int lfRetract = 1;
+    public static final int lrRetract = 3;
+    public static final int rfRetract = 5;
+    public static final int rrRetract = 7;
+    public static final int lpRetract = 9;
+    public static final int rpRetract = 11;
 }

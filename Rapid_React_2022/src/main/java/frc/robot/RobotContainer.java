@@ -39,6 +39,8 @@ public class RobotContainer {
 
   public final Joystick driveStick = new Joystick(Constants.ds);
 
+  public final Joystick opStick = new Joystick(Constants.os);
+
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -55,9 +57,9 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton autoFire = new JoystickButton(driveStick, 1);
-    JoystickButton autoIntake = new JoystickButton(driveStick, 8);
-    JoystickButton outTake = new JoystickButton(driveStick, 12);
+    JoystickButton autoFire = new JoystickButton(opStick, 8);
+    JoystickButton autoIntake = new JoystickButton(opStick, 7);
+    JoystickButton outTake = new JoystickButton(opStick, 9);
 
     autoFire.whenPressed(new AutoFire(m_stage1, m_stage2, m_shooter));
     autoFire.whenReleased(new ShooterOff(m_shooter));
