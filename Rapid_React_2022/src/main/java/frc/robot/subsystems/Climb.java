@@ -11,10 +11,10 @@ import frc.robot.Constants;
 
 public class Climb extends SubsystemBase {
   /** Creates a new Climb. */
-  DoubleSolenoid lf = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.lfExtend, Constants.lfRetract);
-  DoubleSolenoid lr = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.lrExtend, Constants.lrRetract);
-  DoubleSolenoid rf = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.rfExtend, Constants.rfRetract);
-  DoubleSolenoid rr = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.rrExtend, Constants.rrRetract);
+  DoubleSolenoid front = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.frontExtend, Constants.frontRetract);
+  DoubleSolenoid rear = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.rearExtend, Constants.rearRetract);
+  DoubleSolenoid pivotLeft = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.pivotLeftExtend, Constants.pivotLeftRetract);
+  DoubleSolenoid pivotRight = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.pivotRightExtend, Constants.pivotRightRetract);
 
   public Climb() {}
 
@@ -23,7 +23,35 @@ public class Climb extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void extendLarge(){
-    
+  public void extendFront(){
+    front.set(DoubleSolenoid.Value.kForward);
+  }
+
+  public void extendRear(){
+    rear.set(DoubleSolenoid.Value.kForward);
+  }
+
+  public void extendPivotLeft(){
+    pivotLeft.set(DoubleSolenoid.Value.kForward);
+  }
+
+  public void extendPivotRight(){
+    pivotRight.set(DoubleSolenoid.Value.kForward);
+  }
+
+  public void retractFront(){
+    front.set(DoubleSolenoid.Value.kReverse);
+  }
+
+  public void retractRear(){
+    rear.set(DoubleSolenoid.Value.kReverse);
+  }
+
+  public void retractPivotLeft(){
+    pivotLeft.set(DoubleSolenoid.Value.kReverse);
+  }
+
+  public void retractPivotRight(){
+    pivotRight.set(DoubleSolenoid.Value.kReverse);
   }
 }

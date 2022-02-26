@@ -7,10 +7,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
-import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -23,9 +21,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  private final AutoCommand m_autoCommand = new AutoCommand();
 
   public final DriveTrain m_piboticsdrive = new DriveTrain();
 
@@ -37,6 +33,10 @@ public class RobotContainer {
 
   public final Stage2 m_stage2 = new Stage2();
 
+  public final Limelight m_limelight = new Limelight();
+
+  public final Climb m_climb = new Climb();
+
   public final Joystick driveStick = new Joystick(Constants.ds);
 
   public final Joystick opStick = new Joystick(Constants.os);
@@ -47,6 +47,9 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     m_piboticsdrive.setDefaultCommand(new PiboticsDrive(m_piboticsdrive, driveStick));
+    m_limelight.setDefaultCommand(new GetLimelight(m_limelight));
+    m_stage1.setDefaultCommand(new GetSensor1(m_stage1));
+    m_stage2.setDefaultCommand(new GetSensor2(m_stage2));
     configureButtonBindings();
   }
 
@@ -60,11 +63,18 @@ public class RobotContainer {
     JoystickButton autoFire = new JoystickButton(opStick, 8);
     JoystickButton autoIntake = new JoystickButton(opStick, 7);
     JoystickButton outTake = new JoystickButton(opStick, 9);
+    JoystickButton clearShooter = new JoystickButton(opStick, 10);
+    JoystickButton limelight = new JoystickButton(opStick, 4);
 
     autoFire.whenPressed(new AutoFire(m_stage1, m_stage2, m_shooter));
     autoFire.whenReleased(new ShooterOff(m_shooter));
     autoFire.whenReleased(new Stage1Off(m_stage1));
     autoFire.whenReleased(new Stage2Off(m_stage2));
+
+    clearShooter.whenPressed(new ClearAll(m_stage1, m_stage2, m_shooter));
+    clearShooter.whenReleased(new ShooterOff(m_shooter));
+    clearShooter.whenReleased(new Stage1Off(m_stage1));
+    clearShooter.whenReleased(new Stage2Off(m_stage2));
 
     autoIntake.whenPressed(new AutoIntake(m_intake, m_stage1, m_stage2));
     autoIntake.whenReleased(new IntakeOff(m_intake));
@@ -73,6 +83,9 @@ public class RobotContainer {
 
     outTake.whenPressed(new IntakeReverse(m_intake));
     outTake.whenReleased(new IntakeOff(m_intake));
+
+    limelight.whenPressed(new DriveLimeLight(m_piboticsdrive, m_limelight));
+    limelight.whenReleased(new GetLimelight(m_limelight));
   }
 
   /**

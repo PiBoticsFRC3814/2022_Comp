@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Limelight;
 import frc.robot.Constants;
@@ -105,7 +104,7 @@ public class DriveLimeLight extends CommandBase {
     SmartDashboard.putNumber("Ys", ys);
     SmartDashboard.putNumber("Counter", timeOut);
     SmartDashboard.putNumber("pos", position);
-    SmartDashboard.putBoolean("ValidTarget", m_LimeLight.isValidTarget());
+    m_LimeLight.displayOutput();
 }
 
   // Called once the command ends or is interrupted.

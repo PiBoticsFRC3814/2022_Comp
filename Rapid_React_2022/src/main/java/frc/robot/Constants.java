@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -63,17 +61,13 @@ public final class Constants {
     public static final double distanceFarthest = 0.0;
 
     //pnuematics 
-    public static final int lfExtend = 0;
-    public static final int lrExtend = 2;
-    public static final int rfExtend = 4;
-    public static final int rrExtend = 6;
-    public static final int lpExtend = 8;
-    public static final int rpExtend = 10;
+    public static final int frontExtend = 0;
+    public static final int rearExtend = 2;
+    public static final int pivotLeftExtend = 4;
+    public static final int pivotRightExtend = 6;
 
-    public static final int lfRetract = 1;
-    public static final int lrRetract = 3;
-    public static final int rfRetract = 5;
-    public static final int rrRetract = 7;
-    public static final int lpRetract = 9;
-    public static final int rpRetract = 11;
+    public static final int frontRetract = 1;
+    public static final int rearRetract = 3;
+    public static final int pivotLeftRetract = 5;
+    public static final int pivotRightRetract = 7;
 }

@@ -4,17 +4,22 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.subsystems.Shooter;
 
-public class ShooterOn extends CommandBase {
-  /** Creates a new ShooterOn. */
-  Shooter m_shooter;
-  public ShooterOn(Shooter sh) {
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Limelight;
+
+public class GetLimelight extends CommandBase {
+  /**
+   * Creates a new GetLimelight.
+   */
+  private final Limelight m_LimeLight;
+
+  public GetLimelight(Limelight LimeLight) {
+    m_LimeLight = LimeLight;
+    addRequirements(m_LimeLight);
     // Use addRequirements() here to declare subsystem dependencies.
-    m_shooter = sh;
-    addRequirements(m_shooter);
   }
 
   // Called when the command is initially scheduled.
@@ -25,7 +30,8 @@ public class ShooterOn extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_shooter.setSpeed(Constants.targetRPM);
+    m_LimeLight.displayOutput();
+    SmartDashboard.putBoolean("Target Acquired", m_LimeLight.isValidTarget());
   }
 
   // Called once the command ends or is interrupted.
