@@ -16,6 +16,10 @@ public class Climb extends SubsystemBase {
   DoubleSolenoid pivotLeft = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.pivotLeftExtend, Constants.pivotLeftRetract);
   DoubleSolenoid pivotRight = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.pivotRightExtend, Constants.pivotRightRetract);
 
+  public boolean frontState = false;
+  public boolean rearState = false;
+  public boolean pivotState = false;
+
   public Climb() {}
 
   @Override
@@ -23,7 +27,8 @@ public class Climb extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void extendFront(){
+  public void extendFront()
+  {
     front.set(DoubleSolenoid.Value.kForward);
   }
 

@@ -60,11 +60,14 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton autoFire = new JoystickButton(opStick, 8);
-    JoystickButton autoIntake = new JoystickButton(opStick, 7);
-    JoystickButton outTake = new JoystickButton(opStick, 9);
+    JoystickButton autoFire = new JoystickButton(opStick, 6);
+    JoystickButton autoIntake = new JoystickButton(opStick, 5);
+    JoystickButton outTake = new JoystickButton(opStick, 7);
     JoystickButton clearShooter = new JoystickButton(opStick, 10);
-    JoystickButton limelight = new JoystickButton(opStick, 4);
+    JoystickButton limelight = new JoystickButton(opStick, 9);
+    JoystickButton toggleFrontClimb = new JoystickButton(opStick, 3);
+    JoystickButton toggleRearClimb = new JoystickButton(opStick, 4);
+    JoystickButton togglePivotClimb = new JoystickButton(opStick, 1);
 
     autoFire.whenPressed(new AutoFire(m_stage1, m_stage2, m_shooter));
     autoFire.whenReleased(new ShooterOff(m_shooter));
@@ -86,6 +89,10 @@ public class RobotContainer {
 
     limelight.whenPressed(new DriveLimeLight(m_piboticsdrive, m_limelight));
     limelight.whenReleased(new GetLimelight(m_limelight));
+
+    toggleFrontClimb.whenPressed(new ToggleFrontClimb(m_climb));
+    toggleRearClimb.whenPressed(new ToggleRearClimb(m_climb));
+    togglePivotClimb.whenPressed(new TogglePivotClimb(m_climb));
   }
 
   /**
