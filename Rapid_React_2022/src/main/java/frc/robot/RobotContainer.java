@@ -66,8 +66,8 @@ public class RobotContainer {
     JoystickButton clearShooter = new JoystickButton(opStick, 10);
     JoystickButton limelight = new JoystickButton(opStick, 9);
     JoystickButton toggleFrontClimb = new JoystickButton(opStick, 3);
-    JoystickButton toggleRearClimb = new JoystickButton(opStick, 4);
-    JoystickButton togglePivotClimb = new JoystickButton(opStick, 1);
+    JoystickButton toggleRearClimb = new JoystickButton(opStick, 1);
+    JoystickButton togglePivotClimb = new JoystickButton(opStick, 4);
 
     autoFire.whenPressed(new AutoFire(m_stage1, m_stage2, m_shooter));
     autoFire.whenReleased(new ShooterOff(m_shooter));
