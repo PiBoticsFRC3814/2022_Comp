@@ -7,14 +7,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Climb;
 
-public class Retractrearclimb extends CommandBase {
-  /** Creates a new Retractfrontclimb. */
-  Climb m_rearclimb;
-
-  public Retractrearclimb(Climb rearclimb) {
+public class Retractpivotleft extends CommandBase {
+  /** Creates a new Retractpivotleft. */
+  Climb m_pivotleft;
+  public Retractpivotleft(Climb pivotleft) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_rearclimb = rearclimb;
-    addRequirements(m_rearclimb);
+    m_pivotleft = pivotleft;
+    addRequirements(m_pivotleft);
   }
 
   // Called when the command is initially scheduled.
@@ -24,7 +23,7 @@ public class Retractrearclimb extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_rearclimb.retractRear();
+    m_pivotleft.retractPivotLeft();
   }
 
   // Called once the command ends or is interrupted.
