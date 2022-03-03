@@ -5,11 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Climb;
 
-public class Retractbackclimb extends CommandBase {
-  /** Creates a new Retractbackclimb. */
-  public Retractbackclimb() {
+public class Extendrearclimb extends CommandBase {
+  /** Creates a new Extendclimb. */
+  Climb m_rearclimb;
+  public Extendrearclimb(Climb rearclimb) {
     // Use addRequirements() here to declare subsystem dependencies.
+    m_rearclimb = rearclimb;
+    addRequirements(m_rearclimb);
   }
 
   // Called when the command is initially scheduled.
@@ -18,7 +22,9 @@ public class Retractbackclimb extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    m_rearclimb.extendRear();
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -27,6 +33,6 @@ public class Retractbackclimb extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

@@ -54,11 +54,11 @@ public final class Constants {
     public static final int os = 2;
 
     //LimeLight variables
-    public static final double limeAngle = 0.0;
-    public static final double targetHeight = 0.0;
-    public static final double limeHeight = 0.0;
-    public static final double distanceLowest = 0.0;
-    public static final double distanceFarthest = 0.0;
+    public static final double limeAngle = 58.0;
+    public static final double targetHeight = 104.0;
+    public static final double limeHeight = 21.5;
+    public static final double distanceLowest = 84.0;
+    public static final double distanceFarthest = 90.0;
 
     //pnuematics 
     public static final int frontExtend = 0;
