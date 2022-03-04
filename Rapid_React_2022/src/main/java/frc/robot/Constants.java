@@ -61,13 +61,13 @@ public final class Constants {
     public static final double distanceFarthest = 90.0;
 
     //pnuematics 
-    public static final int frontExtend = 0;
-    public static final int rearExtend = 2;
-    public static final int pivotLeftExtend = 4;
-    public static final int pivotRightExtend = 6;
+    public static final int frontExtend = 2;
+    public static final int rearExtend = 5;
+    public static final int pivotLeftExtend = 6;
+    public static final int pivotRightExtend = 0;
 
-    public static final int frontRetract = 1;
-    public static final int rearRetract = 3;
+    public static final int frontRetract = 4;
+    public static final int rearRetract = 7;
     public static final int pivotLeftRetract = 5;
-    public static final int pivotRightRetract = 7;
+    public static final int pivotRightRetract = 1;
 }
