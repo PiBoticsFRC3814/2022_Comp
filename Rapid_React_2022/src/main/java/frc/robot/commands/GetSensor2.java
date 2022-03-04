@@ -10,7 +10,7 @@ import frc.robot.subsystems.Stage2;
 
 public class GetSensor2 extends CommandBase {
   /** Creates a new GetSensor1. */
-  Stage2 m_stage2 = new Stage2();
+  Stage2 m_stage2;
   public GetSensor2(Stage2 s2) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_stage2 = s2;

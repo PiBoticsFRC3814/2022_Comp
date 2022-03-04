@@ -13,8 +13,7 @@ public class TogglePivotClimb extends CommandBase {
   public TogglePivotClimb(Climb pivot) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_pivot = pivot;
-    m_pivot = pivot;
-    addRequirements(m_pivot, m_pivot);
+    addRequirements(m_pivot);
   }
 
   // Called when the command is initially scheduled.

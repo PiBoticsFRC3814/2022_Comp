@@ -63,7 +63,7 @@ public class RobotContainer {
     JoystickButton autoFire = new JoystickButton(opStick, 6);
     JoystickButton autoIntake = new JoystickButton(opStick, 5);
     JoystickButton outTake = new JoystickButton(opStick, 7);
-    JoystickButton clearShooter = new JoystickButton(opStick, 10);
+    JoystickButton clearShooter = new JoystickButton(opStick, 8);
     JoystickButton limelight = new JoystickButton(opStick, 9);
     JoystickButton toggleFrontClimb = new JoystickButton(opStick, 3);
     JoystickButton toggleRearClimb = new JoystickButton(opStick, 1);

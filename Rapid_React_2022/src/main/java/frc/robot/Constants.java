@@ -24,9 +24,9 @@ public final class Constants {
     public static final int stage2Channel = 1;
 
     //motor speeds
-    public static final double intakeSpeed = 1.0;
-    public static final double stage1Speed = 1.0;
-    public static final double stage2Speed = 1.0;
+    public static final double intakeSpeed = -1.0;
+    public static final double stage1Speed = -1.0;
+    public static final double stage2Speed = -1.0;
 
     //shooter PID
     public static final double kP = 2e-4; 
@@ -67,7 +67,7 @@ public final class Constants {
     public static final int pivotRightExtend = 0;
 
     public static final int frontRetract = 4;
-    public static final int rearRetract = 7;
-    public static final int pivotLeftRetract = 5;
+    public static final int rearRetract = 7 ;
+    public static final int pivotLeftRetract = 3;
     public static final int pivotRightRetract = 1;
 }

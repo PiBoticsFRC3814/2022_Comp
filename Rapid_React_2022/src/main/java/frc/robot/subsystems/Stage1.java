@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -15,7 +16,9 @@ public class Stage1 extends SubsystemBase {
   /** Creates a new Stage1. */
   TalonSRX stage1 = new TalonSRX(Constants.stage1Id);
   DigitalInput limit = new DigitalInput(Constants.stage1Channel);
-  public Stage1() {}
+  public Stage1() {
+    stage1.setNeutralMode(NeutralMode.Brake);
+  }
 
   @Override
   public void periodic() {

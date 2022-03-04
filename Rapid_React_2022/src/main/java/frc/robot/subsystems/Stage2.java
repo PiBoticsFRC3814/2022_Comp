@@ -9,15 +9,16 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class Stage2 extends SubsystemBase {
 
   WPI_TalonSRX Stage2 = new WPI_TalonSRX(Constants.stage2Id);
-  DigitalInput limit = new DigitalInput(Constants.stage2Channel);
+  DigitalInput limit2 = new DigitalInput(Constants.stage2Channel);
   /** Creates a new Stage2. */
   public Stage2() {
-
+    Stage2.setNeutralMode(NeutralMode.Brake);
   }
 
   @Override
@@ -34,6 +35,6 @@ public class Stage2 extends SubsystemBase {
     Stage2.set(ControlMode.PercentOutput, -Constants.stage2Speed);
   }
   public boolean getSensorState(){
-    return limit.get();
+    return limit2.get();
   }
 }

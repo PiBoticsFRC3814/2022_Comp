@@ -41,7 +41,7 @@ public class ClearAll extends CommandBase {
     finish = false;
     timer.stop();
     timer.reset();
-    //m_shooter.setSpeed(Constants.targetRPM);
+    m_shooter.setSpeed(Constants.targetRPM);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -49,8 +49,7 @@ public class ClearAll extends CommandBase {
   public void execute() {
     se1 = !m_stage1.getSensorState();
     se2 = !m_stage2.getSensorState();
- //   velocity = m_shooter.getSpeed();
-    velocity = Constants.targetRPM;
+    velocity = m_shooter.getSpeed();
     if((velocity > Constants.targetRPM - Constants.RPMtolerance) && (velocity < Constants.targetRPM + Constants.RPMtolerance))
     {
       counter++;
