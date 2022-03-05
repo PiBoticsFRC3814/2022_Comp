@@ -14,7 +14,7 @@ public class AutoIntake extends CommandBase {
   Intake m_intake;
   Stage1 m_stage1;
   Stage2 m_stage2;
-  boolean se1, se2, finish;
+  boolean se1, se2;
   public AutoIntake(Intake intake, Stage1 s1, Stage2 s2) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_intake = intake;
@@ -30,7 +30,6 @@ public class AutoIntake extends CommandBase {
   public void initialize() {
     se1 = false;
     se2 = false;
-    finish = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -46,8 +45,7 @@ public class AutoIntake extends CommandBase {
     else{
       m_stage2.Stage2Off();
       m_stage1.Stage1Off();
-      m_intake.IntakeOff();
-      finish = true;
+      m_intake.IntakeReverse();
     }
     if(!se2){
       m_stage2.Stage2On();
@@ -64,6 +62,6 @@ public class AutoIntake extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return finish;
+    return false;
   }
 }

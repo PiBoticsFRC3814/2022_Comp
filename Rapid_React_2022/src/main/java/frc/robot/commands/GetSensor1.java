@@ -24,7 +24,7 @@ public class GetSensor1 extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    SmartDashboard.putBoolean("Front Ball", m_stage1.getSensorState());
+    SmartDashboard.putBoolean("Front Ball", !m_stage1.getSensorState());
   }
 
   // Called once the command ends or is interrupted.

@@ -65,9 +65,9 @@ public class RobotContainer {
     JoystickButton outTake = new JoystickButton(opStick, 7);
     JoystickButton clearShooter = new JoystickButton(opStick, 8);
     JoystickButton limelight = new JoystickButton(opStick, 9);
-    JoystickButton toggleFrontClimb = new JoystickButton(opStick, 3);
-    JoystickButton toggleRearClimb = new JoystickButton(opStick, 1);
-    JoystickButton togglePivotClimb = new JoystickButton(opStick, 4);
+    JoystickButton toggleFrontClimb = new JoystickButton(opStick, 4);
+    JoystickButton toggleRearClimb = new JoystickButton(opStick, 2);
+    JoystickButton togglePivotClimb = new JoystickButton(opStick, 1);
 
     autoFire.whenPressed(new AutoFire(m_stage1, m_stage2, m_shooter));
     autoFire.whenReleased(new ShooterOff(m_shooter));
@@ -84,7 +84,9 @@ public class RobotContainer {
     autoIntake.whenReleased(new Stage1Off(m_stage1));
     autoIntake.whenReleased(new Stage2Off(m_stage2));
 
+    outTake.whenPressed(new Stage1Reverse(m_stage1));
     outTake.whenPressed(new IntakeReverse(m_intake));
+    outTake.whenReleased(new Stage1Off(m_stage1));
     outTake.whenReleased(new IntakeOff(m_intake));
 
     limelight.whenPressed(new DriveLimeLight(m_piboticsdrive, m_limelight));

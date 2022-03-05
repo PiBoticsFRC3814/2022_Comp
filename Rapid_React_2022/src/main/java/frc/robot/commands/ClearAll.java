@@ -59,11 +59,11 @@ public class ClearAll extends CommandBase {
       m_stage1.Stage1On();
       m_stage2.Stage2On();
     }
-    if(se1 && se2)
+    if(!se1 && !se2)
     {
       timer.start();
     }
-    if((se1 && se2) && (timer.get() > Constants.shootDelay * 2.0)){
+    if((!se1 && !se2) && (timer.get() > Constants.shootDelay * 2.0)){
       m_stage1.Stage1Off();
       m_stage2.Stage2Off();
       m_shooter.stop();

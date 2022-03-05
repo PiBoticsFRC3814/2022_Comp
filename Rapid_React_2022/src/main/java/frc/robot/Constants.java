@@ -29,25 +29,23 @@ public final class Constants {
     public static final double stage2Speed = -1.0;
 
     //shooter PID
-    public static final double kP = 2e-4; 
+    public static final double kP = 8e-4; 
     public static final double kI = 1e-7;
     public static final double kD = 0; 
     public static final double kIz = 0; 
-    public static final double kFF = 0.00014; 
+    public static final double kFF = 0.00017; 
     public static final double kMaxOutput = 1.0; 
     public static final double kMinOutput = 0.1;
-    public static final double targetRPM = 2000;
-    public static final double RPMtolerance = 50;
+    public static final double targetRPM = 5000;
+    public static final double RPMtolerance = 100;
 
     //shooter delay
-    public static final double shootDelay = 0.2;
+    public static final double shootDelay = 0.4;
       
 
     //drive train ids
-    public static final int lf = 10;
-    public static final int rf = 11;
-    public static final int lr = 12;
-    public static final int rr = 13;
+    public static final int leftdrive = 10;
+    public static final int rightdrive = 11;
 
     //joysticks
     public static final int ds = 0;
@@ -57,17 +55,17 @@ public final class Constants {
     public static final double limeAngle = 58.0;
     public static final double targetHeight = 104.0;
     public static final double limeHeight = 21.5;
-    public static final double distanceLowest = 84.0;
-    public static final double distanceFarthest = 90.0;
+    public static final double distanceLowest = 52.0;
+    public static final double distanceFarthest = 56.0;
 
     //pnuematics 
-    public static final int frontExtend = 2;
-    public static final int rearExtend = 5;
+    public static final int frontExtend = 4;
+    public static final int rearExtend = 7;
     public static final int pivotLeftExtend = 6;
     public static final int pivotRightExtend = 0;
 
-    public static final int frontRetract = 4;
-    public static final int rearRetract = 7 ;
+    public static final int frontRetract = 2;
+    public static final int rearRetract = 5;
     public static final int pivotLeftRetract = 3;
     public static final int pivotRightRetract = 1;
 }

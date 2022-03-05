@@ -22,6 +22,7 @@ public class Shooter extends SubsystemBase {
     encoder = shooter.getEncoder();
 
     shooter.setIdleMode(CANSparkMax.IdleMode.kCoast);
+    shooter.setInverted(true);
 
     velocityPID.setP(Constants.kP);
     velocityPID.setI(Constants.kI);

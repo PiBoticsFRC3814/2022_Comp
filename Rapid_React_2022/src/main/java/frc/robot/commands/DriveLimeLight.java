@@ -20,7 +20,7 @@ public class DriveLimeLight extends CommandBase {
   Limelight m_LimeLight;
   DriveTrain m_PiboticsDrive;
 
-  public static double ys, zs;
+  public static double ys, zs, x, t;
   public static int timeOut = 0;
   public static int position = 0;
 
@@ -63,12 +63,22 @@ public class DriveLimeLight extends CommandBase {
     }
     if (m_LimeLight.z < Constants.distanceLowest)
     {
-      zs = 0.3;
+      x = m_LimeLight.z;
+      t = (Constants.distanceFarthest + Constants.distanceLowest) / 2;
+      zs = ((x - t) / 20) - 0.2;
+      if (zs < -0.5) {
+        zs = -0.5;
+      }
       isZPos = false;
     }
     else if (m_LimeLight.z > Constants.distanceFarthest)
     {
-      zs = -0.3;
+      x = m_LimeLight.z;
+      t = (Constants.distanceFarthest + Constants.distanceLowest) / 2;
+      zs = ((x - t) / 20) + 0.2;
+      if (zs > 0.5) {
+        zs = 0.5;
+      }
       isZPos = false;
     }
     else
@@ -99,7 +109,7 @@ public class DriveLimeLight extends CommandBase {
     {
       m_LimeLight.position = true;
     }
-    m_PiboticsDrive.Drive(zs, ys, false);
+    m_PiboticsDrive.Drive(-zs, ys, false);
     SmartDashboard.putNumber("Zs", zs);
     SmartDashboard.putNumber("Ys", ys);
     SmartDashboard.putNumber("Counter", timeOut);
