@@ -68,4 +68,10 @@ public final class Constants {
     public static final int rearRetract = 5; // little
     public static final int pivotLeftRetract = 6; //pivot
     public static final int pivotRightRetract = 1; //extra
+
+    //Autonomous
+    public static final double turnSpeed = 0.4;
+    public static final double forwardSpeed = 0.3;
+    public static final double forwardTime = 1.0;
+    public static final int autoCount = 10;
 }

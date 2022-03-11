@@ -5,15 +5,29 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants;
+import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Stage1;
+import frc.robot.subsystems.Stage2;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class Autonomous extends SequentialCommandGroup {
   /** Creates a new Autonomous. */
-  public Autonomous() {
+  public Autonomous(Intake m_intake, Stage1 m_stage1, Stage2 m_stage2, DriveTrain m_drivetrain, Limelight m_limelight, Shooter m_shooter) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands();
+
+    addCommands(
+      new IntakeDrive(m_drivetrain, m_intake, m_stage1, m_stage2, Constants.forwardTime, Constants.forwardSpeed),
+      new AutoTurn(Constants.forwardSpeed, m_limelight, m_drivetrain),
+      new DriveLimeLight(m_drivetrain, m_limelight),
+      new ClearAll(m_stage1, m_stage2, m_shooter),
+      new TimedForward(m_drivetrain, Constants.forwardTime, -Constants.forwardSpeed)
+    );
   }
 }

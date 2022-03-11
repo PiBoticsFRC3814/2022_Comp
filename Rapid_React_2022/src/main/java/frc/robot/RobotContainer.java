@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 
@@ -21,7 +22,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final AutoCommand m_autoCommand = new AutoCommand();
+  
 
   public final DriveTrain m_piboticsdrive = new DriveTrain();
 
@@ -40,6 +41,8 @@ public class RobotContainer {
   public final Joystick driveStick = new Joystick(Constants.ds);
 
   public final Joystick opStick = new Joystick(Constants.os);
+
+  private final CommandBase m_autoCommand = new Autonomous(m_intake, m_stage1, m_stage2, m_piboticsdrive, m_limelight, m_shooter);
 
 
 
