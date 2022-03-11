@@ -29,10 +29,10 @@ public final class Constants {
     public static final double stage2Speed = -1.0;
 
     //shooter PID
-    public static final double kP = 8e-4; 
+    public static final double kP = 8e-4;
     public static final double kI = 1e-7;
-    public static final double kD = 0; 
-    public static final double kIz = 0; 
+    public static final double kD = 0;
+    public static final double kIz = 0;
     public static final double kFF = 0.00017; 
     public static final double kMaxOutput = 1.0; 
     public static final double kMinOutput = 0.1;
@@ -59,13 +59,13 @@ public final class Constants {
     public static final double distanceFarthest = 56.0;
 
     //pnuematics 
-    public static final int frontExtend = 4;
-    public static final int rearExtend = 7;
-    public static final int pivotLeftExtend = 6;
-    public static final int pivotRightExtend = 0;
+    public static final int frontExtend = 4; //BIG
+    public static final int rearExtend = 7; // Little
+    public static final int pivotLeftExtend = 3; //Pivot
+    public static final int pivotRightExtend = 0; //extra
 
-    public static final int frontRetract = 2;
-    public static final int rearRetract = 5;
-    public static final int pivotLeftRetract = 3;
-    public static final int pivotRightRetract = 1;
+    public static final int frontRetract = 2; //big
+    public static final int rearRetract = 5; // little
+    public static final int pivotLeftRetract = 6; //pivot
+    public static final int pivotRightRetract = 1; //extra
 }
