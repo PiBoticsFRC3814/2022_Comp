@@ -55,8 +55,8 @@ public final class Constants {
     public static final double limeAngle = 58.0;
     public static final double targetHeight = 104.0;
     public static final double limeHeight = 21.5;
-    public static final double distanceLowest = 52.0;
-    public static final double distanceFarthest = 56.0;
+    public static final double distanceLowest = 39.0;//52
+    public static final double distanceFarthest = 47.0;//56
 
     //pnuematics 
     public static final int frontExtend = 4; //BIG
