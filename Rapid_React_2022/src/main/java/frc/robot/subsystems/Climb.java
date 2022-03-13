@@ -18,7 +18,7 @@ public class Climb extends SubsystemBase {
 
   public boolean frontState = false;
   public boolean rearState = false;
-  public boolean pivotState = false;
+  public boolean pivotState = true;
 
   public Climb() {}
 

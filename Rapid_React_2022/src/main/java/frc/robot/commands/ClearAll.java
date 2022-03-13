@@ -67,6 +67,7 @@ public class ClearAll extends CommandBase {
       m_stage1.Stage1Off();
       m_stage2.Stage2Off();
       m_shooter.stop();
+      finish = true;
     }  
   }
 

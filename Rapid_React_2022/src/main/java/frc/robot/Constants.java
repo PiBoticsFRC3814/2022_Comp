@@ -20,7 +20,7 @@ public final class Constants {
     public static final int shooterId = 20;
 
     //sensor channel
-    public static final int stage1Channel = 0;
+    public static final int stage1Channel = 2;
     public static final int stage2Channel = 1;
 
     //motor speeds
@@ -40,7 +40,7 @@ public final class Constants {
     public static final double RPMtolerance = 100;
 
     //shooter delay
-    public static final double shootDelay = 0.4;
+    public static final double shootDelay = 0.5;
       
 
     //drive train ids
@@ -70,8 +70,11 @@ public final class Constants {
     public static final int pivotRightRetract = 1; //extra
 
     //Autonomous
-    public static final double turnSpeed = 0.4;
-    public static final double forwardSpeed = 0.3;
-    public static final double forwardTime = 1.0;
+    public static final double turnSpeed = 0.6;
+    public static final double turnAngle = 180;
+    public static final double forwardSpeed = 0.5;
+    public static final double forwardTime = 2.5;
+    public static final double reverseSpeed = -0.5;
+    public static final double dropTime = 0.5;
     public static final int autoCount = 10;
 }

@@ -7,35 +7,22 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Stage1;
-import frc.robot.subsystems.Stage2;
 
-public class IntakeDrive extends CommandBase {
-  /** Creates a new TimedForward. */
+public class DropIntake extends CommandBase {
+  /** Creates a new DropIntake. */
   private final DriveTrain m_DriveTrain;
-  private final Intake m_intake;
-  private final Stage1 m_stage1;
-  private final Stage2 m_stage2;
   private Double moveTime;
   private Double moveSpeed;
   private Timer autoTimer;
-  private Boolean done, se1, se2;
+  private boolean dropped;
 
-
-  public IntakeDrive(DriveTrain drivetrain, Double movetime, Double speed, Intake intake, Stage1 stage1, Stage2 stage2) {
+  public DropIntake(DriveTrain drivetrain, Double movetime, Double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
-    autoTimer = new Timer();
     m_DriveTrain = drivetrain;
     moveTime = movetime;
     moveSpeed = -speed;
-    m_intake = intake;
-    m_stage1 = stage1;
-    m_stage2 = stage2;
+    autoTimer = new Timer();
     addRequirements(m_DriveTrain);
-    addRequirements(m_intake);
-    addRequirements(m_stage1);
-    addRequirements(m_stage2);
 
   }
 
@@ -44,33 +31,12 @@ public class IntakeDrive extends CommandBase {
   public void initialize() {
     autoTimer.stop();
     autoTimer.reset();
-    done = false;
-    se1 = false;
-    se2 = false;
+    dropped = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    se1 = !m_stage1.getSensorState();
-    se2 = !m_stage2.getSensorState();
-
-    if((!se1)||(!se2)){
-      m_stage1.Stage1On();
-      m_intake.IntakeOn();
-    }
-    else{
-      m_stage2.Stage2Off();
-      m_stage1.Stage1Off();
-      m_intake.IntakeReverse();
-    }
-    if(!se2){
-      m_stage2.Stage2On();
-    }
-    else{
-      m_stage2.Stage2Off();
-    }
-
     autoTimer.start();
     
     if (autoTimer.get() < moveTime){
@@ -78,9 +44,10 @@ public class IntakeDrive extends CommandBase {
     }
     else {
       m_DriveTrain.Drive(0, 0, false);
-      done = true;
+      dropped = true;
     }
   }
+
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {}
@@ -88,12 +55,9 @@ public class IntakeDrive extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (done){
-      done = false;
+    if (dropped){
+      dropped = false;
       m_DriveTrain.Drive(0.0,0.0,false);
-      m_intake.IntakeOff();
-      m_stage1.Stage1Off();
-      m_stage2.Stage2Off();
       return true;
     }
     else{

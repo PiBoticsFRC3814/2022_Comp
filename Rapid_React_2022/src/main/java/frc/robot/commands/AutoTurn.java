@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
@@ -14,14 +15,19 @@ public class AutoTurn extends CommandBase {
   Double speed;
   Limelight m_limelight;
   DriveTrain m_drivetrain;
+  ADXRS450_Gyro m_gyro;
   Boolean done;
   int counter = 0;
+  private Double moveAngle;
+  private Double z;
 
-  public AutoTurn(Double Speed, Limelight LimeLight, DriveTrain drivetrain) {
+  public AutoTurn(Double Speed, double turn, Limelight LimeLight, DriveTrain drivetrain, ADXRS450_Gyro gyro) {
     // Use addRequirements() here to declare subsystem dependencies.
     speed = Speed;
     m_limelight = LimeLight;
     m_drivetrain = drivetrain;
+    m_gyro = gyro;
+    moveAngle = turn;
     addRequirements(m_drivetrain);
     addRequirements(m_limelight);
 
@@ -37,20 +43,17 @@ public class AutoTurn extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(m_limelight.isValidTarget())
-    {
-      counter++;
-      done = false;
+    if (m_gyro.getAngle()>moveAngle + 10){
+      z = -(Math.abs((m_gyro.getAngle()-moveAngle)*0.00333)+0.3);
     }
-    else
-    {
-      m_drivetrain.Drive(0, speed, false);
-      done = false;
+    if (m_gyro.getAngle()<moveAngle - 10){
+      z= Math.abs((m_gyro.getAngle()-moveAngle)*0.00333)+0.3;
     }
-    if(counter > Constants.autoCount){
-      m_drivetrain.Drive(0, 0, false);
+    if ((moveAngle+1)>m_gyro.getAngle() && (moveAngle-1)<m_gyro.getAngle()){
+      z = 0.0;
       done = true;
     }
+    m_drivetrain.Drive(0.0,z,false);
   }
 
   // Called once the command ends or is interrupted.

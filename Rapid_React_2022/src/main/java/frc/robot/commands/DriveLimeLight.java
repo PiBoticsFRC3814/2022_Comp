@@ -38,6 +38,9 @@ public class DriveLimeLight extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_LimeLight.position = false;
+    position = 0;
+    timeOut = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -91,10 +94,6 @@ public class DriveLimeLight extends CommandBase {
     {
       position++;
     }
-    else
-    {
-      m_LimeLight.position = false;
-    }
 
     if (!m_LimeLight.isValidTarget())
     {
@@ -105,7 +104,7 @@ public class DriveLimeLight extends CommandBase {
       timeOut = 0;
     }
 
-    if (position >= 25)
+    if (position >= 60)
     {
       m_LimeLight.position = true;
     }
@@ -114,6 +113,9 @@ public class DriveLimeLight extends CommandBase {
     SmartDashboard.putNumber("Ys", ys);
     SmartDashboard.putNumber("Counter", timeOut);
     SmartDashboard.putNumber("pos", position);
+    SmartDashboard.putBoolean("ypos", isYPos);
+    SmartDashboard.putBoolean("zpos", isZPos);
+    SmartDashboard.putBoolean("POS", m_LimeLight.position);
     m_LimeLight.displayOutput();
 }
 
@@ -125,7 +127,7 @@ public class DriveLimeLight extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (timeOut <= 100 || !m_LimeLight.position)
+    if (!m_LimeLight.position)
     {
       return false;
     }
