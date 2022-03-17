@@ -36,7 +36,7 @@ public final class Constants {
     public static final double kFF = 1e-6; 
     public static final double kMaxOutput = 1.0; 
     public static final double kMinOutput = 0.1;
-    public static final double targetRPM = 5000;
+    public static final double targetRPM = 4000;
     public static final double RPMtolerance = 100;
 
     //shooter delay
@@ -55,8 +55,8 @@ public final class Constants {
     public static final double limeAngle = 58.0;
     public static final double targetHeight = 104.0;
     public static final double limeHeight = 21.5;
-    public static final double distanceLowest = 39.0;//52
-    public static final double distanceFarthest = 47.0;//56
+    public static final double distanceLowest = 41.6;//39.0;//52
+    public static final double distanceFarthest = 49.6;//47.0;//56
 
     //pnuematics 
     public static final int frontExtend = 4; //BIG

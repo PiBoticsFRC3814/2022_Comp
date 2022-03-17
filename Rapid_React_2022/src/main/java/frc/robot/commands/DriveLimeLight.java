@@ -41,6 +41,7 @@ public class DriveLimeLight extends CommandBase {
     m_LimeLight.position = false;
     position = 0;
     timeOut = 0;
+    m_PiboticsDrive.brakeOn();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -137,6 +138,7 @@ public class DriveLimeLight extends CommandBase {
       m_LimeLight.offLight();
       isYPos = false;
       isZPos = false;
+      m_PiboticsDrive.brakeOff();
       return true;
     }
   }

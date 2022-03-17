@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
@@ -73,6 +74,7 @@ public class AutoFire extends CommandBase {
         m_stage2.Stage2Off();
         m_shooter.stop();
         finish = true;
+      DriverStation.reportError("Speed: " + m_shooter.getSpeed(), true);
       }
     }
   

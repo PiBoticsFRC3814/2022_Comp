@@ -101,6 +101,7 @@ public class RobotContainer {
     outTake.whenReleased(new IntakeOff(m_intake));
 
     limelight.whenPressed(new DriveLimeLight(m_piboticsdrive, m_limelight));
+    limelight.whenReleased(new BrakeOff(m_piboticsdrive));
     limelight.whenReleased(new GetLimelight(m_limelight));
 
     toggleFrontClimb.whenPressed(new ToggleFrontClimb(m_climb));

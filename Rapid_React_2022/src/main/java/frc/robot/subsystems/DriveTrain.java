@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -25,6 +26,16 @@ public class DriveTrain extends SubsystemBase {
 
   public void Drive(double y, double x, boolean stick) {
     m_piboticsDrive.arcadeDrive(-y, x, stick);
+  }
+
+  public void brakeOn(){
+    leftdrive.setNeutralMode(NeutralMode.Brake);
+    rightdrive.setNeutralMode(NeutralMode.Brake);
+  }
+
+  public void brakeOff(){
+    leftdrive.setNeutralMode(NeutralMode.Coast);
+    rightdrive.setNeutralMode(NeutralMode.Coast);
   }
 
   @Override
