@@ -36,7 +36,7 @@ public final class Constants {
     public static final double kFF = 1e-6; 
     public static final double kMaxOutput = 1.0; 
     public static final double kMinOutput = 0.1;
-    public static final double targetRPM = 4000;
+    public static final double targetRPM = 3800;
     public static final double RPMtolerance = 100;
 
     //shooter delay
