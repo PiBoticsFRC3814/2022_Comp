@@ -73,8 +73,8 @@ public final class Constants {
     public static final double turnSpeed = 0.6;
     public static final double turnAngle = 160; //180
     public static final double forwardSpeed = 0.5;
-    public static final double forwardTime = 2.5;
+    public static final double forwardTime = 1.5;
     public static final double reverseSpeed = -0.5;
-    public static final double dropTime = 0.5;
+    public static final double dropTime = 0.25;
     public static final int autoCount = 10;
 }

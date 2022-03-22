@@ -44,10 +44,10 @@ public class AutoTurn extends CommandBase {
   @Override
   public void execute() {
     if (m_gyro.getAngle()>moveAngle + 10){
-      z = -(Math.abs((m_gyro.getAngle()-moveAngle)*0.00333)+0.3);
+      z = -(Math.abs((m_gyro.getAngle()-moveAngle)*0.00333)+0.4); //0.00333
     }
     if (m_gyro.getAngle()<moveAngle - 10){
-      z= Math.abs((m_gyro.getAngle()-moveAngle)*0.00333)+0.3;
+      z= Math.abs((m_gyro.getAngle()-moveAngle)*0.00333)+0.4;
     }
     if ((moveAngle+1)>m_gyro.getAngle() && (moveAngle-1)<m_gyro.getAngle()){
       z = 0.0;

@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
@@ -26,9 +27,10 @@ public class Autonomous extends SequentialCommandGroup {
     addCommands(
       new DropIntake(m_drivetrain, Constants.dropTime, Constants.forwardSpeed),
       new DropIntake(m_drivetrain, Constants.dropTime, Constants.reverseSpeed),
-      new IntakeDrive(m_drivetrain, Constants.forwardTime, Constants.forwardSpeed, m_intake, m_stage1, m_stage2),
-      new AutoTurn(Constants.forwardSpeed, Constants.turnAngle, m_limelight, m_drivetrain, m_gyro),
-      new DriveLimeLight(m_drivetrain, m_limelight),
+      new ParallelDeadlineGroup(new TimedForward(m_drivetrain, Constants.forwardTime, Constants.forwardSpeed), new AutoIntake(m_intake,m_stage1, m_stage2)),
+      //new IntakeDrive(m_drivetrain, Constants.forwardTime, Constants.forwardSpeed, m_intake, m_stage1, m_stage2),
+      new ParallelDeadlineGroup(new AutoTurn(0.0, Constants.turnAngle, m_limelight, m_drivetrain, m_gyro), new AutoIntake(m_intake, m_stage1, m_stage2), new ShooterOn(m_shooter)),
+      new ParallelDeadlineGroup(new DriveLimeLight(m_drivetrain, m_limelight), new AutoIntake(m_intake, m_stage1, m_stage2), new ShooterOn(m_shooter)),
       new ClearAll(m_stage1, m_stage2, m_shooter)
     );
   }

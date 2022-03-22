@@ -50,12 +50,14 @@ public class DriveLimeLight extends CommandBase {
     m_LimeLight.onLight();
     SmartDashboard.putBoolean("Target Acquired", m_LimeLight.isValidTarget());
 
-    if (m_LimeLight.yaw > 2)
+    
+
+    if (m_LimeLight.yaw > 10)  //2
     {
       ys = 0.3;
       isYPos = false;
     }
-    else if (m_LimeLight.yaw < -2)
+    else if (m_LimeLight.yaw < 6) //-2
     {
       ys = -0.3;
       isYPos = false;
@@ -105,7 +107,7 @@ public class DriveLimeLight extends CommandBase {
       timeOut = 0;
     }
 
-    if (position >= 60)
+    if (position >= 45)
     {
       m_LimeLight.position = true;
     }
