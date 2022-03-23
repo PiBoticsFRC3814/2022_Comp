@@ -52,12 +52,14 @@ public final class Constants {
     public static final int os = 2;
 
     //LimeLight variables
-    public static final double limeAngle = 58.0;
-    public static final double targetHeight = 104.0;
-    public static final double limeHeight = 21.5;
-    public static final double distanceLowest = 41.6;//39.0;//52
-    public static final double distanceFarthest = 49.6;//47.0;//56
-
+    public static final double limeAngle = 58.0; // used in part of distance equations
+    public static final double targetHeight = 104.0; //used in part of distance equations
+    public static final double limeHeight = 21.5; //used in part of distance equations
+    public static final double distanceLowest = 41.6; // used for single limelight shot location
+    public static final double distanceFarthest = 49.6; // ued for sincle imelight shot location
+    public static final double minimumDistacne = 0.0;  // used for automatic RPM adjustment minimumt to make the ball
+    public static final double maximumDistance = 100.0; // used for automatic RPM adjustment maximum to make the ball
+ 
     //pnuematics 
     public static final int frontExtend = 4; //BIG
     public static final int rearExtend = 7; // Little
