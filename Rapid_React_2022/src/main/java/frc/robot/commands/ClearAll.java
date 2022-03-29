@@ -18,6 +18,7 @@ public class ClearAll extends CommandBase {
   Stage2 m_stage2;
   double velocity = 0.0;
   int counter = 0;
+  int ignorethistest = 0;
   boolean se1, se2, finish;
 
   Timer timer = new Timer();
