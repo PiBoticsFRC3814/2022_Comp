@@ -12,6 +12,7 @@ import frc.robot.subsystems.Shooter;
 public class BangBang extends CommandBase {
   /** Creates a new BangBang. */
   Shooter m_shooter;
+  int donovan = 0;
   public BangBang(Shooter s) {
     m_shooter = s;
     addRequirements(m_shooter);
