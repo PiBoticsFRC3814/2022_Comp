@@ -11,7 +11,7 @@ import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Stage1;
 import frc.robot.subsystems.Stage2;
 import frc.robot.Constants;
-import java.math.*;
+import java.lang.Math;
 
 
 public class LimelightShooterAnywhere extends CommandBase {
@@ -24,6 +24,10 @@ public class LimelightShooterAnywhere extends CommandBase {
   Shooter m_shooter;
   double flushAngle = 0.0;
   double shooterSpeed = 0.0;
+  double ys;
+  boolean isYPos;
+  double zs;
+  boolean isZPos;
 
   public LimelightShooterAnywhere(Stage1 s1, Stage2 s2, DriveTrain drive, Limelight limelight, Shooter sh) {
     
@@ -47,14 +51,43 @@ public class LimelightShooterAnywhere extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
+    flushAngle = setYawAngle();
+    if (m_limelight.yaw > flushAngle + 2)
+    {
+      ys = 0.3;
+      isYPos = false;
+    }
+    else if (m_limelight.yaw < flushAngle - 2) //-2
+    {
+      ys = -0.3;
+      isYPos = false;
+    }
+    else
+    {
+      ys = 0;
+      isYPos = true;
+    }
     if (m_limelight.z < Constants.maximumDistance && m_limelight.z > Constants.minimumDistacne){
       shooterSpeed = setRPM(); //pretty sure this wont work not sure why it is not erroring.
       m_shooter.setSpeed(shooterSpeed);
-      flushAngle = setYawAngle(); //pretty sure this wont work...
+       //pretty sure this wont work...
       //turn to flush angle
       //shoot the balls once shooter is up to speed and yaw is close
+      isZPos = true;
     }
+    else if(m_limelight.z > Constants.maximumDistance)
+    {
+      zs = 0.4;
+      isZPos = false;
+      flushAngle = setYawAngle();
+    }
+    else if (m_limelight.z < Constants.minimumDistacne)
+    {
+      zs = -0.4;
+      isZPos = false;
+      flushAngle = setYawAngle();
+    }
+
 
   }
 
@@ -70,10 +103,12 @@ public class LimelightShooterAnywhere extends CommandBase {
 
   private double setRPM(){
     double RPM = 0.0;
+    RPM = 83.33*m_limelight.z;
     return RPM;
   }
   private double setYawAngle(){
     double Yaw = 0.0;
+    Yaw = Math.toDegrees(Math.atan((Constants.hoopDiameter/5)/((Constants.hoopDiameter/2)+(m_limelight.z))));
 
     return Yaw;
   }

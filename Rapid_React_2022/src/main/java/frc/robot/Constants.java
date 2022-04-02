@@ -34,10 +34,11 @@ public final class Constants {
     public static final double kD = 1e-2;
     public static final double kIz = 0;
     public static final double kFF = 1e-6; 
-    public static final double kMaxOutput = 1.0; 
-    public static final double kMinOutput = 0.1;
-    public static final double targetRPM = 3800;
+    public static final double kMaxOutput = 1.0;     public static final double kMinOutput = 0.1;
+    public static final double targetRPM = 4200;
+    public static final double bangRPM = 3800;
     public static final double RPMtolerance = 100;
+
 
     //shooter delay
     public static final double shootDelay = 0.5;
@@ -79,4 +80,7 @@ public final class Constants {
     public static final double reverseSpeed = -0.5;
     public static final double dropTime = 0.25;
     public static final int autoCount = 10;
+
+    //Field
+    public static final double hoopDiameter = 48.0;//inches
 }

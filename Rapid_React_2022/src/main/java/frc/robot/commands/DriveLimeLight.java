@@ -137,7 +137,7 @@ public class DriveLimeLight extends CommandBase {
     else
     {
       m_PiboticsDrive.Drive(0, 0, false);
-      m_LimeLight.offLight();
+      //m_LimeLight.offLight();
       isYPos = false;
       isZPos = false;
       m_PiboticsDrive.brakeOff();

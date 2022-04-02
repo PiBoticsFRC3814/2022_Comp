@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.ADIS16470_IMU;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
@@ -15,18 +16,18 @@ public class AutoTurn extends CommandBase {
   Double speed;
   Limelight m_limelight;
   DriveTrain m_drivetrain;
-  ADXRS450_Gyro m_gyro;
+  ADIS16470_IMU m_gyro;
   Boolean done;
   int counter = 0;
   private Double moveAngle;
   private Double z;
 
-  public AutoTurn(Double Speed, double turn, Limelight LimeLight, DriveTrain drivetrain, ADXRS450_Gyro gyro) {
+  public AutoTurn(Double Speed, double turn, Limelight LimeLight, DriveTrain drivetrain, ADIS16470_IMU m_gyro2) {
     // Use addRequirements() here to declare subsystem dependencies.
     speed = Speed;
     m_limelight = LimeLight;
     m_drivetrain = drivetrain;
-    m_gyro = gyro;
+    m_gyro = m_gyro2;
     moveAngle = turn;
     addRequirements(m_drivetrain);
     addRequirements(m_limelight);
@@ -54,6 +55,7 @@ public class AutoTurn extends CommandBase {
       done = true;
     }
     m_drivetrain.Drive(0.0,z,false);
+    
   }
 
   // Called once the command ends or is interrupted.

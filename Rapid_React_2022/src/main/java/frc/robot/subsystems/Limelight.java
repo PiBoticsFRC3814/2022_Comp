@@ -47,10 +47,10 @@ public class Limelight extends SubsystemBase {
     }
   }
 
-  public void offLight() {
+ /*public void offLight() {
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
     light = false;
-  }
+  }*/
 
   public void onLight() {
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);

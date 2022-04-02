@@ -39,6 +39,16 @@ public class Shooter extends SubsystemBase {
   public void setSpeed(double speed){
     velocityPID.setReference(speed, ControlType.kVelocity);
   }
+  //P loop with infinite f, for testing
+  public void bangBang(double speed)
+  {
+    if(encoder.getVelocity() < speed)
+    {
+      shooter.set(1.0);
+    }
+    else
+      shooter.set(0.0);
+  }
   public void stop(){
     shooter.set(0.0);
   }

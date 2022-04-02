@@ -14,6 +14,8 @@ import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj.ADIS16448_IMU;
+import edu.wpi.first.wpilibj.ADIS16470_IMU;
 
 
 /**
@@ -25,7 +27,9 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   
-  public ADXRS450_Gyro m_gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
+  //public ADXRS450_Gyro m_gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
+
+  public ADIS16470_IMU m_gyro = new ADIS16470_IMU();
 
   public final DriveTrain m_piboticsdrive = new DriveTrain();
 
@@ -74,7 +78,7 @@ public class RobotContainer {
     JoystickButton toggleFrontClimb = new JoystickButton(opStick, 4);
     JoystickButton toggleRearClimb = new JoystickButton(opStick, 2);
     JoystickButton togglePivotClimb = new JoystickButton(opStick, 1);
-    JoystickButton ToggleLimelight = new JoystickButton(opStick, 10);
+    //JoystickButton ToggleLimelight = new JoystickButton(opStick, 10);
     JoystickButton shooterToggle = new JoystickButton(opStick, 3);
 
     shooterToggle.whenPressed(new ShooterOn(m_shooter));
@@ -109,7 +113,7 @@ public class RobotContainer {
     toggleRearClimb.whenPressed(new ToggleRearClimb(m_climb));
     togglePivotClimb.whenPressed(new TogglePivotClimb(m_climb));
 
-    ToggleLimelight.whenPressed(new ToggleLimelight(m_limelight));
+    //ToggleLimelight.whenPressed(new ToggleLimelight(m_limelight));
   }
 
   /**

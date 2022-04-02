@@ -5,16 +5,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Limelight;
 
-
-public class ToggleLimelight extends CommandBase {
-  /** Creates a new ToggleLimelight. */
-  Limelight m_limelight;
-  public ToggleLimelight(Limelight limelight) {
+public class IntakeShift extends CommandBase {
+  /** Creates a new IntakeUp. */
+  public IntakeShift() {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_limelight = limelight;
-    addRequirements(m_limelight);
   }
 
   // Called when the command is initially scheduled.
@@ -23,16 +18,7 @@ public class ToggleLimelight extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    if(m_limelight.light == true)
-    {
-      m_limelight.onLight();
-    }
-    else
-    {
-      m_limelight.onLight();
-    }
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
@@ -41,6 +27,6 @@ public class ToggleLimelight extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }
