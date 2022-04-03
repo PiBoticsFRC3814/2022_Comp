@@ -49,16 +49,34 @@ public class ClearAll extends CommandBase {
   public void execute() {
     se1 = !m_stage1.getSensorState();
     se2 = !m_stage2.getSensorState();
+    //m_shooter.bangBang(Constants.bangRPM);
     velocity = m_shooter.getSpeed();
     if((velocity > Constants.targetRPM - Constants.RPMtolerance) && (velocity < Constants.targetRPM + Constants.RPMtolerance))
     {
       counter++;
+    }
+    else
+    {
+      counter = 0;
     }
     if(counter > 10)
     {
       m_stage1.Stage1On();
       m_stage2.Stage2On();
     }
+    else
+    {
+      if((!se2)){
+        m_stage1.Stage1On();
+        m_stage2.Stage2On();
+      }
+      else{
+        m_stage1.Stage1Off();
+        m_stage2.Stage2Off();
+        //finish = true;
+      }
+    }
+    /*
     if(!se1 && !se2)
     {
       timer.start();
@@ -68,7 +86,7 @@ public class ClearAll extends CommandBase {
       m_stage2.Stage2Off();
       m_shooter.stop();
       finish = true;
-    }  
+    }  */
   }
 
   // Called once the command ends or is interrupted.
@@ -78,6 +96,6 @@ public class ClearAll extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return finish;
+    return false;
   }
 }

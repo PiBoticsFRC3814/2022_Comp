@@ -29,13 +29,13 @@ public final class Constants {
     public static final double stage2Speed = -1.0;
 
     //shooter PID
-    public static final double kP = 4e-4;
-    public static final double kI = 1e-6;
-    public static final double kD = 1e-2;
+    public static final double kP = 3e-4; //4e-4
+    public static final double kI = 1e-6;  //1e-6
+    public static final double kD = 1e-2; //1e-2
     public static final double kIz = 0;
     public static final double kFF = 1e-6; 
     public static final double kMaxOutput = 1.0;     public static final double kMinOutput = 0.1;
-    public static final double targetRPM = 4200;
+    public static final double targetRPM = 5000;
     public static final double bangRPM = 3800;
     public static final double RPMtolerance = 100;
 
@@ -53,11 +53,11 @@ public final class Constants {
     public static final int os = 2;
 
     //LimeLight variables
-    public static final double limeAngle = 58.0; // used in part of distance equations
+    public static final double limeAngle = 33.0; // used in part of distance equations
     public static final double targetHeight = 104.0; //used in part of distance equations
     public static final double limeHeight = 21.5; //used in part of distance equations
-    public static final double distanceLowest = 41.6; // used for single limelight shot location
-    public static final double distanceFarthest = 49.6; // ued for sincle imelight shot location
+    public static final double distanceLowest = 109.0; // used for single limelight shot location
+    public static final double distanceFarthest = 117.0; // ued for sincle imelight shot location
     public static final double minimumDistacne = 0.0;  // used for automatic RPM adjustment minimumt to make the ball
     public static final double maximumDistance = 100.0; // used for automatic RPM adjustment maximum to make the ball
  
