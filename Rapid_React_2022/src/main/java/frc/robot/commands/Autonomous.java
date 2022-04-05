@@ -26,8 +26,8 @@ public class Autonomous extends SequentialCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
 
     addCommands(
-      new DropIntake(m_drivetrain, Constants.dropTime, Constants.forwardSpeed),
       new DropIntake(m_drivetrain, Constants.dropTime, Constants.reverseSpeed),
+      new DropIntake(m_drivetrain, Constants.dropTime, Constants.forwardSpeed),
       new ParallelDeadlineGroup(new TimedForward(m_drivetrain, Constants.forwardTime, Constants.forwardSpeed), new AutoIntake(m_intake,m_stage1, m_stage2)),
       //new IntakeDrive(m_drivetrain, Constants.forwardTime, Constants.forwardSpeed, m_intake, m_stage1, m_stage2),
       new ParallelDeadlineGroup(new AutoTurn(0.0, Constants.turnAngle, m_limelight, m_drivetrain, m_gyro), new AutoIntake(m_intake, m_stage1, m_stage2), new ShooterOn(m_shooter)),

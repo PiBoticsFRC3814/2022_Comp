@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Limelight;
 import frc.robot.Constants;
@@ -54,12 +55,12 @@ public class DriveLimeLight extends CommandBase {
 
     if (m_LimeLight.yaw > 6)  //2
     {
-      ys = 0.3;
+      ys = 0.2;
       isYPos = false;
     }
     else if (m_LimeLight.yaw < 2) //-2
     {
-      ys = -0.3;
+      ys = -0.2;
       isYPos = false;
     }
     else
@@ -71,7 +72,7 @@ public class DriveLimeLight extends CommandBase {
     {
       x = m_LimeLight.z;
       t = (Constants.distanceFarthest + Constants.distanceLowest) / 2;
-      zs = ((x - t) / 100);
+      zs = ((x - t) / 20) - 0.2;
       if (zs < -0.5) {
         zs = -0.5;
       }
@@ -81,7 +82,7 @@ public class DriveLimeLight extends CommandBase {
     {
       x = m_LimeLight.z;
       t = (Constants.distanceFarthest + Constants.distanceLowest) / 2;
-      zs = ((x - t) / 100);
+      zs = ((x - t) / 20) - 0.2;
       if (zs > 0.5) {
         zs = 0.5;
       }

@@ -22,6 +22,7 @@ public class TimedForward extends CommandBase {
     m_DriveTrain = drivetrain;
     moveTime = movetime;
     moveSpeed = speed;
+    autoTimer = new Timer();
     addRequirements(m_DriveTrain);
   }
 

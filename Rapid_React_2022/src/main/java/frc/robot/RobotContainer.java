@@ -70,7 +70,7 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton autoFire = new JoystickButton(opStick, 6);
+    //JoystickButton autoFire = new JoystickButton(opStick, 6);
     JoystickButton autoIntake = new JoystickButton(opStick, 5);
     JoystickButton outTake = new JoystickButton(opStick, 7);
     JoystickButton clearShooter = new JoystickButton(opStick, 8);
@@ -84,10 +84,10 @@ public class RobotContainer {
     shooterToggle.whenPressed(new ShooterOn(m_shooter));
     shooterToggle.whenReleased(new ShooterOff(m_shooter));
 
-    autoFire.whenPressed(new AutoFire(m_stage1, m_stage2, m_shooter));
-    autoFire.whenReleased(new ShooterOff(m_shooter));
-    autoFire.whenReleased(new Stage1Off(m_stage1));
-    autoFire.whenReleased(new Stage2Off(m_stage2));
+    //autoFire.whenPressed(new AutoFire(m_stage1, m_stage2, m_shooter));
+    //autoFire.whenReleased(new ShooterOff(m_shooter));
+    //autoFire.whenReleased(new Stage1Off(m_stage1));
+    //autoFire.whenReleased(new Stage2Off(m_stage2));
 
     clearShooter.whenPressed(new ClearAll(m_stage1, m_stage2, m_shooter));
     clearShooter.whenReleased(new ShooterOff(m_shooter));

@@ -57,7 +57,7 @@ public class ClearAll extends CommandBase {
     }
     else
     {
-      counter = 0;
+      //counter = 0;
     }
     if(counter > 10)
     {
@@ -73,11 +73,11 @@ public class ClearAll extends CommandBase {
       else{
         m_stage1.Stage1Off();
         m_stage2.Stage2Off();
-        //finish = true;
+        finish = true;
       }
     }
-    /*
-    if(!se1 && !se2)
+    
+   /* if(!se1 && !se2)
     {
       timer.start();
     }
@@ -86,7 +86,7 @@ public class ClearAll extends CommandBase {
       m_stage2.Stage2Off();
       m_shooter.stop();
       finish = true;
-    }  */
+    }*/
   }
 
   // Called once the command ends or is interrupted.

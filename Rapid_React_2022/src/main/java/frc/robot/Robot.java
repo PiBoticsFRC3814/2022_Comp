@@ -62,9 +62,9 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-    m_robotContainer.m_gyro.setYawAxis(IMUAxis.kX);
+    m_robotContainer.m_gyro.setYawAxis(IMUAxis.kY);
     m_robotContainer.m_gyro.reset();
+    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
@@ -73,7 +73,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    SmartDashboard.putNumber("Gyro Angle: ", m_robotContainer.m_gyro.getAngle());
+  }
 
   @Override
   public void teleopInit() {
@@ -84,6 +86,8 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    m_robotContainer.m_gyro.setYawAxis(IMUAxis.kY);
+    m_robotContainer.m_gyro.reset();
   }
 
   /** This function is called periodically during operator control. */
