@@ -18,15 +18,20 @@ public final class Constants {
     public static final int stage1Id = 21;
     public static final int stage2Id = 22;
     public static final int shooterId = 20;
+    public static final int moveIntakeId = 24;
 
     //sensor channel
     public static final int stage1Channel = 2;
     public static final int stage2Channel = 1;
+    public static final int upChannel = 3;
+    public static final int downChannel = 4;
+
 
     //motor speeds
     public static final double intakeSpeed = -1.0;
     public static final double stage1Speed = -1.0;
     public static final double stage2Speed = -1.0;
+    public static final double moveIntakeSpeed = .1;
 
     //shooter PID
     public static final double kP = 4e-4; //4e-4

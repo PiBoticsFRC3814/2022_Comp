@@ -38,6 +38,15 @@ public class DriveTrain extends SubsystemBase {
     rightdrive.setNeutralMode(NeutralMode.Coast);
   }
 
+  public double leftCurrent(){
+    return leftdrive.getSupplyCurrent();
+  }
+
+  public double rightCurrent(){
+    return rightdrive.getSupplyCurrent();
+  }
+
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

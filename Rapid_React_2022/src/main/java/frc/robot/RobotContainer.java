@@ -14,6 +14,7 @@ import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.ADIS16470_IMU;
 
@@ -40,6 +41,8 @@ public class RobotContainer {
   public final Stage1 m_stage1 = new Stage1();
 
   public final Stage2 m_stage2 = new Stage2();
+
+  public final MoveIntake m_moveIntake = new MoveIntake();
 
   public final Limelight m_limelight = new Limelight();
 

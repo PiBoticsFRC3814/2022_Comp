@@ -5,20 +5,27 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.MoveIntake;
 
-public class IntakeShift extends CommandBase {
-  /** Creates a new IntakeUp. */
-  public IntakeShift() {
+public class IntakeUp extends CommandBase {
+  /** Creates a new ToggleIntake. */
+  MoveIntake m_moveIntake = new MoveIntake();
+  public IntakeUp(MoveIntake moveIntake) {
     // Use addRequirements() here to declare subsystem dependencies.
+    m_moveIntake = moveIntake;
+    addRequirements(m_moveIntake);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    m_moveIntake.UpIntake();
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -27,6 +34,6 @@ public class IntakeShift extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

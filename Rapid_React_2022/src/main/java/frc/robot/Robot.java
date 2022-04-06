@@ -22,7 +22,8 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-
+  private double left = 0.0;
+  private double right = 0.0;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -95,6 +96,14 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     SmartDashboard.putNumber("Speed: ", RobotContainer.m_shooter.getSpeed());
     SmartDashboard.putNumber("Gyro Angle: ", m_robotContainer.m_gyro.getAngle());
+    if (Math.abs(m_robotContainer.m_piboticsdrive.leftCurrent())>left){
+      left = Math.abs(m_robotContainer.m_piboticsdrive.leftCurrent());
+    }
+    if (Math.abs(m_robotContainer.m_piboticsdrive.rightCurrent())>right){
+      right = Math.abs(m_robotContainer.m_piboticsdrive.rightCurrent());
+    }
+    SmartDashboard.putNumber("LeftCurrent: ", left);
+    SmartDashboard.putNumber("RightCurrent: ", right);
   }
 
   @Override
