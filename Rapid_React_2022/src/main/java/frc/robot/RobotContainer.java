@@ -52,7 +52,7 @@ public class RobotContainer {
 
   public final Joystick opStick = new Joystick(Constants.os);
 
-  private final CommandBase m_autoCommand = new Autonomous(m_intake, m_stage1, m_stage2, m_piboticsdrive, m_limelight, m_shooter, m_gyro);
+  private final CommandBase m_autoCommand = new Autonomous(m_intake, m_stage1, m_stage2, m_piboticsdrive, m_limelight, m_shooter, m_gyro, m_moveIntake);
 
 
 
@@ -83,6 +83,14 @@ public class RobotContainer {
     JoystickButton togglePivotClimb = new JoystickButton(opStick, 1);
     //JoystickButton ToggleLimelight = new JoystickButton(opStick, 10);
     JoystickButton shooterToggle = new JoystickButton(opStick, 3);
+    POVButton upPOV = new POVButton(opStick, 0);
+    POVButton downPOV = new POVButton(opStick, 180);
+
+    upPOV.whenPressed(new IntakeUp(m_moveIntake));
+    upPOV.whenReleased(new IntakeStop(m_moveIntake));
+
+    downPOV.whenPressed(new IntakeDown(m_moveIntake));
+    downPOV.whenReleased(new IntakeStop(m_moveIntake));
 
     shooterToggle.whenPressed(new ShooterOn(m_shooter));
     shooterToggle.whenReleased(new ShooterOff(m_shooter));

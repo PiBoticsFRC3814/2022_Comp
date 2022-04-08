@@ -53,12 +53,12 @@ public class DriveLimeLight extends CommandBase {
 
     
 
-    if (m_LimeLight.yaw > 6)  //2
+    if (m_LimeLight.yaw > 3)  //2
     {
       ys = 0.2;
       isYPos = false;
     }
-    else if (m_LimeLight.yaw < 2) //-2
+    else if (m_LimeLight.yaw < 1) //-2
     {
       ys = -0.2;
       isYPos = false;
@@ -83,7 +83,8 @@ public class DriveLimeLight extends CommandBase {
       x = m_LimeLight.z;
       t = (Constants.distanceFarthest + Constants.distanceLowest) / 2;
       zs = ((x - t) / 20) - 0.2;
-      if (zs > 0.5) {
+      if (zs > 0.5) 
+      {
         zs = 0.5;
       }
       isZPos = false;

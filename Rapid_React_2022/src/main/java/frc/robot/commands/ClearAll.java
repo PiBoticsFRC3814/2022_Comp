@@ -57,7 +57,7 @@ public class ClearAll extends CommandBase {
     }
     else
     {
-      //counter = 0;
+      counter = 0;
     }
     if(counter > 10)
     {

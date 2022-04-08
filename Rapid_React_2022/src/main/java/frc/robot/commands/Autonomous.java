@@ -12,6 +12,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.MoveIntake;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Stage1;
 import frc.robot.subsystems.Stage2;
@@ -21,14 +22,14 @@ import frc.robot.subsystems.Stage2;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class Autonomous extends SequentialCommandGroup {
   /** Creates a new Autonomous. */
-  public Autonomous(Intake m_intake, Stage1 m_stage1, Stage2 m_stage2, DriveTrain m_drivetrain, Limelight m_limelight, Shooter m_shooter, ADIS16470_IMU m_gyro) {
+  public Autonomous(Intake m_intake, Stage1 m_stage1, Stage2 m_stage2, DriveTrain m_drivetrain, Limelight m_limelight, Shooter m_shooter, ADIS16470_IMU m_gyro, MoveIntake m_moveintake) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
 
     addCommands(
-      new DropIntake(m_drivetrain, Constants.dropTime, Constants.reverseSpeed),
-      new DropIntake(m_drivetrain, Constants.dropTime, Constants.forwardSpeed),
-      new ParallelDeadlineGroup(new TimedForward(m_drivetrain, Constants.forwardTime, Constants.forwardSpeed), new AutoIntake(m_intake,m_stage1, m_stage2)),
+      new ParallelDeadlineGroup (new DropIntake(m_drivetrain, Constants.dropTime, Constants.reverseSpeed), new IntakeDown(m_moveintake)),
+      new ParallelDeadlineGroup (new DropIntake(m_drivetrain, Constants.dropTime, Constants.forwardSpeed), new IntakeDown(m_moveintake)),
+      new ParallelDeadlineGroup(new TimedForward(m_drivetrain, Constants.forwardTime, Constants.forwardSpeed), new IntakeDown(m_moveintake), new AutoIntake(m_intake,m_stage1, m_stage2)),
       //new IntakeDrive(m_drivetrain, Constants.forwardTime, Constants.forwardSpeed, m_intake, m_stage1, m_stage2),
       new ParallelDeadlineGroup(new AutoTurn(0.0, Constants.turnAngle, m_limelight, m_drivetrain, m_gyro), new AutoIntake(m_intake, m_stage1, m_stage2), new ShooterOn(m_shooter)),
       new ParallelDeadlineGroup(new DriveLimeLight(m_drivetrain, m_limelight), new AutoIntake(m_intake, m_stage1, m_stage2), new ShooterOn(m_shooter)),

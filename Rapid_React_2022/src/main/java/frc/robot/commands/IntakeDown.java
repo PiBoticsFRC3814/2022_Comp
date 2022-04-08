@@ -24,7 +24,13 @@ public class IntakeDown extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_moveIntake.DownIntake();
+    //if(Math.abs(m_moveIntake.MotorAmps()) < 150.0)
+    //{
+      m_moveIntake.DownIntake();
+    //}
+    //else{
+      //m_moveIntake.StopIntake();
+    //}
   }
 
   // Called once the command ends or is interrupted.
@@ -34,6 +40,12 @@ public class IntakeDown extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    if(Math.abs(m_moveIntake.MotorAmps()) > 150.0)
+    {
+      return false;
+    }
+    else{
+      return false;
+    }
   }
 }
