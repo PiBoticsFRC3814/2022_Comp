@@ -4,35 +4,32 @@
 
 package frc.robot.commands;
 
+import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.MoveIntake;
 
-public class IntakeUp extends CommandBase {
-  /** Creates a new ToggleIntake. */
-  MoveIntake m_moveIntake = new MoveIntake();
-  public IntakeUp(MoveIntake moveIntake) {
+/** An example command that uses an example subsystem. */
+public class ExampleCommand extends CommandBase {
+  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  private final ExampleSubsystem m_subsystem;
+
+  /**
+   * Creates a new ExampleCommand.
+   *
+   * @param subsystem The subsystem used by this command.
+   */
+  public ExampleCommand(ExampleSubsystem subsystem) {
+    m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    m_moveIntake = moveIntake;
-    addRequirements(m_moveIntake);
+    addRequirements(subsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    
-    //if((Math.abs(m_moveIntake.MotorAmps())) < 150.0)
-    //{
-      m_moveIntake.UpIntake();
-    //}
-    //else{
-      //m_moveIntake.StopIntake();
-    //}
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
@@ -41,12 +38,6 @@ public class IntakeUp extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(Math.abs(m_moveIntake.MotorAmps()) > 150.0)
-    {
-      return false;
-    }
-    else{
-      return false;
-    }
+    return false;
   }
 }

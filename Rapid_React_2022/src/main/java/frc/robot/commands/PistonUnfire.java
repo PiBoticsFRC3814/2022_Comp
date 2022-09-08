@@ -4,17 +4,16 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Stage1;
+import frc.robot.subsystems.FiringPin;
 
-public class Stage1On extends CommandBase {
-  /** Creates a new Stage1On. */
-  Stage1 m_stage1;
-  public Stage1On(Stage1 s1) {
+public class PistonUnfire extends CommandBase {
+  /** Creates a new PistonUnfire. */
+  FiringPin pin;
+  public PistonUnfire(FiringPin pin2) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_stage1 = s1;
-    addRequirements(m_stage1);
+    pin = pin2;
+    addRequirements(pin);
   }
 
   // Called when the command is initially scheduled.
@@ -24,8 +23,7 @@ public class Stage1On extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_stage1.Stage1On();
-    SmartDashboard.putBoolean("State: ", m_stage1.getSensorState());
+    pin.FiringPinBackward();
   }
 
   // Called once the command ends or is interrupted.
@@ -35,6 +33,6 @@ public class Stage1On extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

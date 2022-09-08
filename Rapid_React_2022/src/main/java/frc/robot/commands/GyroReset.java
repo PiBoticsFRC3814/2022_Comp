@@ -4,16 +4,16 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Climb;
+import edu.wpi.first.wpilibj.ADIS16470_IMU;
 
-public class TogglePivotClimb extends CommandBase {
-  /** Creates a new Extendpivotleft. */
-  Climb m_pivot;
-  public TogglePivotClimb(Climb pivot) {
+import edu.wpi.first.wpilibj2.command.CommandBase;
+
+public class GyroReset extends CommandBase {
+  /** Creates a new GyroReset. */
+  ADIS16470_IMU gyro;
+  public GyroReset(ADIS16470_IMU gyros) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_pivot = pivot;
-    addRequirements(m_pivot);
+    gyro = gyros;
   }
 
   // Called when the command is initially scheduled.
@@ -23,16 +23,7 @@ public class TogglePivotClimb extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(m_pivot.pivotState){
-      m_pivot.retractPivotLeft();
-      m_pivot.retractPivotRight();
-      m_pivot.pivotState = false;
-    }
-    else{
-      m_pivot.extendPivotLeft();
-      m_pivot.extendPivotRight();
-      m_pivot.pivotState = true;
-    }
+    gyro.reset();
   }
 
   // Called once the command ends or is interrupted.
