@@ -7,59 +7,48 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 
 public class DriveTrain extends SubsystemBase {
-  private static final WPI_TalonSRX lf = new WPI_TalonSRX(Constants.lf);
-  private static final WPI_TalonSRX lr = new WPI_TalonSRX(Constants.lr);
-  private static final WPI_TalonSRX rf = new WPI_TalonSRX(Constants.rf);
-  private static final WPI_TalonSRX rr = new WPI_TalonSRX(Constants.rr);
-  double value;
-  
-  private static final MecanumDrive piboticsdrive = new MecanumDrive(lf, lr, rf, rr);
+  /** Creates a new DriveTrain. */
+  WPI_TalonSRX leftdrive = new WPI_TalonSRX(Constants.leftdrive); 
+  WPI_TalonSRX rightdrive = new WPI_TalonSRX(Constants.rightdrive);
+
+
+  DifferentialDrive m_piboticsDrive = new DifferentialDrive(leftdrive, rightdrive);
 
   public DriveTrain() {
-    lf.setInverted(false);
-    lr.setInverted(false);
-    rf.setInverted(true);
-    rr.setInverted(true);
+    rightdrive.setInverted(true);
   }
 
-  public double applyDeadband(double value, double deadband) {
-    if (Math.abs(value) > deadband) {
-      if (value > 0.0) {
-        return (value - deadband) / (1.0 - deadband);
-      } else {
-        return (value + deadband) / (1.0 - deadband);
-      }
-    } else {
-      return 0.0;
-    }
-  }
-  
-  public void Drive(double y, double x, double z, double gyro, double deadband) {
-    piboticsdrive.driveCartesian(-applyDeadband(x, deadband), applyDeadband(y, deadband), applyDeadband(z, deadband), gyro);
+  public void Drive(double y, double x, boolean stick) {
+    m_piboticsDrive.arcadeDrive(-y, x, stick);
   }
 
-  public void Brake(){
-    lf.setNeutralMode(NeutralMode.Brake);
-    lr.setNeutralMode(NeutralMode.Brake);
-    rf.setNeutralMode(NeutralMode.Brake);
-    rr.setNeutralMode(NeutralMode.Brake);
+  public void brakeOn(){
+    leftdrive.setNeutralMode(NeutralMode.Brake);
+    rightdrive.setNeutralMode(NeutralMode.Brake);
   }
 
-  public void Coast(){
-    lf.setNeutralMode(NeutralMode.Coast);
-    lr.setNeutralMode(NeutralMode.Coast);
-    rf.setNeutralMode(NeutralMode.Coast);
-    rr.setNeutralMode(NeutralMode.Coast);
+  public void brakeOff(){
+    leftdrive.setNeutralMode(NeutralMode.Coast);
+    rightdrive.setNeutralMode(NeutralMode.Coast);
   }
+
+  public double leftCurrent(){
+    return leftdrive.getSupplyCurrent();
+  }
+
+  public double rightCurrent(){
+    return rightdrive.getSupplyCurrent();
+  }
+
 
   @Override
-  public void periodic(){
-    //Method called once per scheduler run
+  public void periodic() {
+    // This method will be called once per scheduler run
   }
 }

@@ -4,10 +4,11 @@
 
 package frc.robot;
 
-import java.io.IOException;
-
-import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.ADIS16470_IMU.IMUAxis;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -21,7 +22,8 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-
+  private double left = 0.0;
+  private double right = 0.0;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -31,6 +33,8 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    Compressor comp = new Compressor(0,PneumaticsModuleType.CTREPCM);
+    comp.enableDigital();
   }
 
   /**
@@ -59,8 +63,9 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
+    m_robotContainer.m_gyro.setYawAxis(IMUAxis.kY);
+    m_robotContainer.m_gyro.reset();
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
@@ -69,7 +74,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    SmartDashboard.putNumber("Gyro Angle: ", m_robotContainer.m_gyro.getAngle());
+  }
 
   @Override
   public void teleopInit() {
@@ -80,16 +87,26 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    try {
-      m_robotContainer.m_recordJoystick.WriteTimeCSV();
-    } catch (IOException e) {
-      DriverStation.reportWarning("Can't Find csv", false);
-    }
+    m_robotContainer.m_gyro.setYawAxis(IMUAxis.kY);
+    m_robotContainer.m_gyro.reset();
+    
+
   }
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    SmartDashboard.putNumber("Speed: ", RobotContainer.m_shooter.getSpeed());
+    SmartDashboard.putNumber("Gyro Angle: ", m_robotContainer.m_gyro.getAngle());
+    if (Math.abs(m_robotContainer.m_piboticsdrive.leftCurrent())>left){
+      left = Math.abs(m_robotContainer.m_piboticsdrive.leftCurrent());
+    }
+    if (Math.abs(m_robotContainer.m_piboticsdrive.rightCurrent())>right){
+      right = Math.abs(m_robotContainer.m_piboticsdrive.rightCurrent());
+    }
+    SmartDashboard.putNumber("LeftCurrent: ", left);
+    SmartDashboard.putNumber("RightCurrent: ", right);
+  }
 
   @Override
   public void testInit() {
