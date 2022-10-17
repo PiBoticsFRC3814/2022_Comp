@@ -4,25 +4,17 @@
 
 package frc.robot.commands;
 
-
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Stage2;
 
-
-public class PiboticsDrive extends CommandBase {
-  /** Creates a new PiboticsDrive. */
-  DriveTrain m_piboticsDrive;
-  private Joystick driverStick;
-
-  
-  
-  public PiboticsDrive(DriveTrain pb, Joystick ds) {
+public class GetSensor2 extends CommandBase {
+  /** Creates a new GetSensor1. */
+  Stage2 m_stage2;
+  public GetSensor2(Stage2 s2) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_piboticsDrive = pb;
-    driverStick = ds;
-    
-    addRequirements(m_piboticsDrive);
+    m_stage2 = s2;
+    addRequirements(m_stage2);
   }
 
   // Called when the command is initially scheduled.
@@ -32,7 +24,7 @@ public class PiboticsDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_piboticsDrive.Drive(driverStick.getY(), driverStick.getZ(), true);
+    SmartDashboard.putBoolean("Rear Ball", !m_stage2.getSensorState());
   }
 
   // Called once the command ends or is interrupted.

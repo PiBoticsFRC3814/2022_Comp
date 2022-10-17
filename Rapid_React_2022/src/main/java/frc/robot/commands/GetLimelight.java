@@ -5,39 +5,39 @@
 package frc.robot.commands;
 
 
-import edu.wpi.first.wpilibj.Joystick;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Limelight;
 
+public class GetLimelight extends CommandBase {
+  /**
+   * Creates a new GetLimelight.
+   */
+  private final Limelight m_LimeLight;
 
-public class PiboticsDrive extends CommandBase {
-  /** Creates a new PiboticsDrive. */
-  DriveTrain m_piboticsDrive;
-  private Joystick driverStick;
-
-  
-  
-  public PiboticsDrive(DriveTrain pb, Joystick ds) {
+  public GetLimelight(Limelight LimeLight) {
+    m_LimeLight = LimeLight;
+    addRequirements(m_LimeLight);
     // Use addRequirements() here to declare subsystem dependencies.
-    m_piboticsDrive = pb;
-    driverStick = ds;
-    
-    addRequirements(m_piboticsDrive);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_piboticsDrive.Drive(driverStick.getY(), driverStick.getZ(), true);
+    m_LimeLight.displayOutput();
+    SmartDashboard.putBoolean("Target Acquired", m_LimeLight.isValidTarget());
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override
