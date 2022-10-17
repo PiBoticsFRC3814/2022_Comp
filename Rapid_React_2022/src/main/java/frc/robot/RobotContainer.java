@@ -84,7 +84,12 @@ public class RobotContainer {
     //JoystickButton ToggleLimelight = new JoystickButton(opStick, 10);
     JoystickButton shooterToggle = new JoystickButton(opStick, 3);
 
-    JoystickButton IntakePivotToggle = new JoystickButton(opstick, 6);
+    //*
+    JoystickButton intakePivotToggle = new JoystickButton(opStick, 6);
+
+    intakePivotToggle.whenPressed(new IntakeDown(m_moveIntake));
+    intakePivotToggle.whenReleased(new IntakeUp(m_moveIntake));
+    //*/
 
     /*
     POVButton upPOV = new POVButton(opStick, 0);
