@@ -87,11 +87,10 @@ public class RobotContainer {
     //*
     JoystickButton intakePivotToggle = new JoystickButton(opStick, 6);
 
-    intakePivotToggle.whenPressed(new IntakeDown(m_moveIntake));
-    intakePivotToggle.whenReleased(new IntakeUp(m_moveIntake));
+    intakePivotToggle.whenPressed(new ToggleIntakePivot(m_moveIntake));
     //*/
 
-    /*
+    //*
     POVButton upPOV = new POVButton(opStick, 0);
     POVButton downPOV = new POVButton(opStick, 180);
 

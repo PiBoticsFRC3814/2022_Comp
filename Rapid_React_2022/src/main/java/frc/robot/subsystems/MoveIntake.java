@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -20,7 +21,7 @@ public class MoveIntake extends SubsystemBase {
   //DigitalInput downLimit = new DigitalInput(Constants.downChannel);
 
   public MoveIntake() {
-    
+    moveIntake.setNeutralMode(NeutralMode.Coast);
   }
 
   public double MotorAmps()
@@ -55,6 +56,18 @@ public class MoveIntake extends SubsystemBase {
     }*/
 
     moveIntake.set(ControlMode.PercentOutput, Constants.moveIntakeSpeed-0.1);
+  }
+
+  public int IntakePivotState(){
+    if(moveIntake.getSensorCollection().isFwdLimitSwitchClosed()){
+      return(1);
+    }
+    if(moveIntake.getSensorCollection().isRevLimitSwitchClosed()){
+      return(-1);
+    }
+    else{
+      return(0);
+    }
   }
 
   public void StopIntake()
