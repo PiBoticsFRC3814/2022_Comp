@@ -87,7 +87,8 @@ public class RobotContainer {
     //*
     JoystickButton intakePivotToggle = new JoystickButton(opStick, 6);
 
-    intakePivotToggle.whenPressed(new ToggleIntakePivot(m_moveIntake));
+    intakePivotToggle.whenPressed(new IntakeDown(m_moveIntake));
+    intakePivotToggle.whenReleased(new IntakeUp(m_moveIntake));
     //*/
 
     //*

@@ -26,7 +26,7 @@ public class IntakeDown extends CommandBase {
   public void execute() {
     //if(Math.abs(m_moveIntake.MotorAmps()) < 150.0)
     //{
-      m_moveIntake.DownIntake();
+    m_moveIntake.DownIntake();
     //}
     //else{
       //m_moveIntake.StopIntake();
@@ -40,12 +40,6 @@ public class IntakeDown extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(Math.abs(m_moveIntake.MotorAmps()) > 150.0)
-    {
-      return false;
-    }
-    else{
-      return false;
-    }
+    return false;
   }
 }

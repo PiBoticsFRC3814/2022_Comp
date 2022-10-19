@@ -27,7 +27,9 @@ public class IntakeUp extends CommandBase {
     
     //if((Math.abs(m_moveIntake.MotorAmps())) < 150.0)
     //{
+    do{
       m_moveIntake.UpIntake();
+    } while(m_moveIntake.IntakePivotState() != -1);
     //}
     //else{
       //m_moveIntake.StopIntake();
@@ -41,12 +43,7 @@ public class IntakeUp extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(Math.abs(m_moveIntake.MotorAmps()) > 150.0)
-    {
-      return false;
-    }
-    else{
-      return false;
-    }
+    m_moveIntake.StopIntake();
+    return true;
   }
 }
